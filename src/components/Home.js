@@ -1,17 +1,32 @@
 import React from "react";
 import styled from "styled-components";
+import { useSelector, useDispatch, shallowEqual } from "react-redux";
 
 import Banner from "./Banner";
+import Search from "./Search";
+import LogList from "./LogList";
+import Poroading from "./Poroading";
 
 const HomeStyle = styled.main`
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  height: 100vh;
 `;
 
-const Home = () => {
-  return <HomeStyle>
-      <Banner/>
-  </HomeStyle>;
-};
+export default function Home() {
+  const { isInputed } = useSelector(
+    (rootReducer) => rootReducer.userReducer,
+    shallowEqual
+  );
 
-export default Home;
+  return (
+    <HomeStyle>
+      <Banner />
+      <Search />
+      {isInputed && <Poroading />}
+      {/* <LogList /> */}
+    </HomeStyle>
+  );
+}
