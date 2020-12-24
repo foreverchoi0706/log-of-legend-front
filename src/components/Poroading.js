@@ -7,13 +7,10 @@ const PoroadingStyle = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  color: white;
-  margin : 30px;
   img {
     width: 100px;
   }
-`;
+`;  
 
 export default function Poroading() {
   return (

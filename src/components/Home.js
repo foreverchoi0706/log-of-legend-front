@@ -25,7 +25,6 @@ export default function Home() {
     <HomeStyle>
       <Banner />
       <Search />
-      {isInputed && <Poroading />}
       {/* <LogList /> */}
     </HomeStyle>
   );
