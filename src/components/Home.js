@@ -6,6 +6,7 @@ import Banner from "./Banner";
 import Search from "./Search";
 import LogList from "./LogList";
 import Poroading from "./Poroading";
+import Footer from "./Footer";
 
 const HomeStyle = styled.main`
   display: flex;
@@ -26,6 +27,7 @@ export default function Home() {
       <Banner />
       <Search />
       {/* <LogList /> */}
+      <Footer/>
     </HomeStyle>
   );
 }

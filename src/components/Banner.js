@@ -9,19 +9,26 @@ const BannerStyle = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  h1{
-    color : yellow;
+  h1 {
+    a {
+      color: yellow;
+    }
   }
   img {
-    border-radius : 5px;
+    border-radius: 5px;
     width: inherit;
+  }
+  @media (max-width: 600px) {
+    width: 100vw;
   }
 `;
 
 const Banner = () => {
   return (
     <BannerStyle>
-      <h1>Log of Legend</h1>
+      <h1>
+        <a href="/">Log of Legend</a>
+      </h1>
       <img src={banner} alt="banner" />
     </BannerStyle>
   );
