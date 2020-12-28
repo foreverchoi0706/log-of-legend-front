@@ -1,2 +1,8 @@
-node_modules
-dist
+back/node_modules
+front/node_modules
+
+
+back/dist
+front/dist
+
+
