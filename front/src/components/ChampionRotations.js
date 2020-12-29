@@ -1,21 +1,33 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useSelector, useDispatch, shallowEqual } from "react-redux";
+import Poroading from "../components/Poroading";
 
 import { rotations } from "../reducers/apiReducer";
 
 const ChampionRotationsStyle = styled.div`
   width: 600px;
-
+  color: white;
+  display: grid;
+  grid-template-columns: repeat(5, 100px);
+  grid-template-rows: 100px 100px 100px;
+  justify-content : space-between;
+  img{
+    border : 1px solid yellow;
+  }
   @media (max-width: 600px) {
     width: 100vw;
-    display: grid;
   }
 `;
 
 export default function ChampionRotations() {
-  const { championRotations } = useSelector(
-    (rootReducer) => rootReducer.apiReducer,
+  const {
+    isLoaded,
+    freeChampionIds,
+    freeChampionIdsForNewPlayers,
+    maxNewPlayerLevel,
+  } = useSelector(
+    (rootReducer) => rootReducer.apiReducer.championRotations,
     shallowEqual
   );
 
@@ -23,13 +35,16 @@ export default function ChampionRotations() {
 
   useEffect(() => {
     dispatch(rotations());
-  }, [dispatch]);
+    console.log(freeChampionIds);
+    console.log(isLoaded);
+  }, [dispatch, rotations]);
 
   return (
     <ChampionRotationsStyle>
-      {championRotations.freeChampionIds.map((champion) => {
-        <span>{champion.freeChampionIds}</span>;
-      })}
+      {isLoaded &&
+        freeChampionIds.map((freeChampionId) => (
+          <img key={freeChampionId} alt={freeChampionId} />
+        ))}
     </ChampionRotationsStyle>
   );
 }

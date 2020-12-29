@@ -1,9 +1,7 @@
 APP ID 479253
 API KEY = RGAPI-4d0083e2-daec-49ba-8e63-b3eec2ed4be0
 
-
-
-kr.api.riotgames.com?key=RGAPI-4d0083e2-daec-49ba-8e63-b3eec2ed4be0
+챔피언 데이터 : http://ddragon.leagueoflegends.com/cdn/10.25.1/data/ko_KR/champion.json
 
 
 

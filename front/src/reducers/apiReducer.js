@@ -6,27 +6,38 @@ export const rotations = () => (dispatch) => {
   lolAPI
     .championRotations()
     .then((championRotations) => {
-      console.log(championRotations);
       dispatch({
         type: ROTATIONS,
         championRotations,
       });
     })
     .catch(() => {
-      alert("ERROR");
+      alert("The error occurred in the [rotations]");
     });
 };
 
+
+
+
+
 const apiState = {
-  championRotations: null,
+  championRotations: {
+    isLoaded: false,
+    freeChampionIds: [],
+    freeChampionIdsForNewPlayers: [],
+    maxNewPlayerLevel: 0,
+  },
 };
 
 const apiReducer = (state = apiState, action) => {
-  switch (state) {
+  switch (action.type) {
     case ROTATIONS:
       return {
         ...state,
-        championRotations: action.championRotations,
+        championRotations: {
+          ...action.championRotations,
+          isLoaded: true,
+        },
       };
     default:
       return state;

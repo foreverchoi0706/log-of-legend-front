@@ -8,6 +8,7 @@ import Search from "./Search";
 import LogList from "./LogList";
 import Poroading from "./Poroading";
 import Footer from "./Footer";
+import Navigation from "./Navigation";
 
 const HomeStyle = styled.main`
   display: flex;
@@ -26,7 +27,7 @@ export default function Home() {
   return (
     <HomeStyle>
       <Banner />
-      <ChampionRotations />
+      <Navigation/>
       <Search />
       {/* <LogList /> */}
       <Footer />

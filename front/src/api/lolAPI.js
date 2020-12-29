@@ -5,7 +5,6 @@ const HOST = "http://localhost:3001";
 const lolAPI = {
   championRotations: async () => {
     const { data } = await axios.get(`${HOST}/championRotations`);
-    console.log(data);
     return data;
   },
   searchSummoner: () => {},
