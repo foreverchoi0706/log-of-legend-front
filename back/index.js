@@ -15,6 +15,7 @@ const app = express();
 app.use(cors());
 
 app.get("/", (req, res) => {
+  console.log(13);
   res.writeHead(200);
   res.write("log-of-legend back");
   res.end();
