@@ -1,6 +1,4 @@
-back/node_modules
-front/node_modules
-
+*/node_modules
 
 back/dist
 front/dist
