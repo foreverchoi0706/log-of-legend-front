@@ -1,6 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { LogOfLegendService } from './log-of-legend.service';
 
+
 describe('LogOfLegendService', () => {
   let service: LogOfLegendService;
 
