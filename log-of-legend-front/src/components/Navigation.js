@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import ChampionRotations from "./ChampionRotations";
+import PlatformData from "./PlatformData";
 
 const NavigationStyle = styled.nav`
   width: 600px;
@@ -8,9 +9,10 @@ const NavigationStyle = styled.nav`
   display: flex;
   details {
     font-size: 0.8rem;
-    flex-grow: 1;
-    summary{
-        display: inline;
+    text-align : center;
+    width: 150px;
+    summary {
+      display: inline;
     }
   }
 
@@ -27,16 +29,14 @@ export default function Navigation() {
         <ChampionRotations />
       </details>
       <details>
-        <summary>챔피언 로테이션</summary>
-        <ChampionRotations />
+        <summary>서버 상태</summary>
+        <PlatformData />
       </details>
       <details>
-        <summary>챔피언 로테이션</summary>
-        <ChampionRotations />
+        <summary>empty</summary>
       </details>
       <details>
-        <summary>챔피언 로테이션</summary>
-        <ChampionRotations />
+        <summary>empty</summary>
       </details>
     </NavigationStyle>
   );

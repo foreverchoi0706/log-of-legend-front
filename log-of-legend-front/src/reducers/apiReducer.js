@@ -5,10 +5,10 @@ const ROTATIONS = "ROTATIONS";
 export const rotations = () => (dispatch) => {
   lolAPI
     .championRotations()
-    .then((championRotations) => {
+    .then((data) => {
       dispatch({
         type: ROTATIONS,
-        championRotations,
+        data,
       });
     })
     .catch(() => {
@@ -16,16 +16,10 @@ export const rotations = () => (dispatch) => {
     });
 };
 
-
-
-
-
 const apiState = {
   championRotations: {
     isLoaded: false,
-    freeChampionIds: [],
-    freeChampionIdsForNewPlayers: [],
-    maxNewPlayerLevel: 0,
+    data: [],
   },
 };
 
@@ -35,7 +29,7 @@ const apiReducer = (state = apiState, action) => {
       return {
         ...state,
         championRotations: {
-          ...action.championRotations,
+          data: action.data,
           isLoaded: true,
         },
       };

@@ -9,11 +9,14 @@ const ChampionRotationsStyle = styled.div`
   width: 600px;
   color: white;
   display: grid;
-  grid-template-columns: repeat(5, 100px);
+  grid-template-columns: repeat(5, 120px);
   grid-template-rows: 100px 100px 100px;
-  justify-content : space-between;
-  img{
-    border : 1px solid yellow;
+  justify-content: space-between;
+
+  img {
+    border-radius : 5px;
+    width: 100%;
+    height: 100%;
   }
   @media (max-width: 600px) {
     width: 100vw;
@@ -21,12 +24,7 @@ const ChampionRotationsStyle = styled.div`
 `;
 
 export default function ChampionRotations() {
-  const {
-    isLoaded,
-    freeChampionIds,
-    freeChampionIdsForNewPlayers,
-    maxNewPlayerLevel,
-  } = useSelector(
+  const { isLoaded, data } = useSelector(
     (rootReducer) => rootReducer.apiReducer.championRotations,
     shallowEqual
   );
@@ -35,15 +33,17 @@ export default function ChampionRotations() {
 
   useEffect(() => {
     dispatch(rotations());
-    console.log(freeChampionIds);
-    console.log(isLoaded);
   }, [dispatch, rotations]);
 
   return (
     <ChampionRotationsStyle>
       {isLoaded &&
-        freeChampionIds.map((freeChampionId) => (
-          <img key={freeChampionId} alt={freeChampionId} />
+        data.map((champion) => (
+          <img
+            key={champion.key}
+            alt={champion.name}
+            src={`http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champion.id}_0.jpg`}
+          />
         ))}
     </ChampionRotationsStyle>
   );
