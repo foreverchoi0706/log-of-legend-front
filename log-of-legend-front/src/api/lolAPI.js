@@ -7,6 +7,10 @@ const lolAPI = {
     const { data } = await axios.get(`${HOST}/champion-rotations`);
     return data;
   },
+
+  platformData : async ()  => {
+    return {};
+  },
   searchSummoner: () => {},
 };
 

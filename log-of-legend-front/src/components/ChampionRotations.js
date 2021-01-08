@@ -3,20 +3,25 @@ import styled from "styled-components";
 import { useSelector, useDispatch, shallowEqual } from "react-redux";
 import Poroading from "../components/Poroading";
 
-import { rotations } from "../reducers/apiReducer";
+import { championRaotaions } from "../reducers/apiReducer";
 
 const ChampionRotationsStyle = styled.div`
   width: 600px;
   color: white;
   display: grid;
-  grid-template-columns: repeat(5, 120px);
-  grid-template-rows: 100px 100px 100px;
-  justify-content: space-between;
+  grid-template-columns: repeat(5, 100px);
+  grid-template-rows: 80px 80px 80px;
+  justify-items : center;
+  align-items : center;
+
+justify-content :space-between; 
+  gap : 10px;
 
   img {
     border-radius : 5px;
-    width: 100%;
-    height: 100%;
+    width: 100px;
+    height: 80px;
+    cursor: pointer;
   }
   @media (max-width: 600px) {
     width: 100vw;
@@ -32,8 +37,8 @@ export default function ChampionRotations() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(rotations());
-  }, [dispatch, rotations]);
+    dispatch(championRaotaions());
+  }, [dispatch, championRaotaions]);
 
   return (
     <ChampionRotationsStyle>

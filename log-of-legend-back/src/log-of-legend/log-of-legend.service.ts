@@ -7,6 +7,12 @@ import { summoner } from './dto/summoner.dto';
 
 const API_KEY = 'RGAPI-4d0083e2-daec-49ba-8e63-b3eec2ed4be0';
 
+const config = {
+  headers: {
+    'X-Riot-Token': API_KEY,
+  },
+};
+
 @Injectable()
 export class LogOfLegendService {
   async championRotations(): Promise<championRotationsDto[]> {
@@ -14,11 +20,7 @@ export class LogOfLegendService {
       data: { freeChampionIds },
     } = await axios.get(
       'https://kr.api.riotgames.com/lol/platform/v3/champion-rotations',
-      {
-        headers: {
-          'X-Riot-Token': API_KEY,
-        },
-      },
+      config,
     );
     const {
       data: { data },
@@ -41,33 +43,21 @@ export class LogOfLegendService {
   async platformData(): Promise<platformData> {
     const { data } = await axios.get(
       'https://kr.api.riotgames.com/lol/status/v4/platform-data',
-      {
-        headers: {
-          'X-Riot-Token': API_KEY,
-        },
-      },
+      config,
     );
     return data;
   }
 
-  async summoner(): Promise<summoner[]> {
+  async summoner(summonerName: string): Promise<summoner[]> {
     const {
       data: { id },
     } = await axios.get(
-      'https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/%EC%8A%A4%ED%8B%B8%EC%B5%9C',
-      {
-        headers: {
-          'X-Riot-Token': API_KEY,
-        },
-      },
+      `https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/${summonerName}`,
+      config,
     );
     const { data } = await axios.get(
       `https://kr.api.riotgames.com/lol/league/v4/entries/by-summoner/${id}`,
-      {
-        headers: {
-          'X-Riot-Token': API_KEY,
-        },
-      },
+      config,
     );
     return data;
   }

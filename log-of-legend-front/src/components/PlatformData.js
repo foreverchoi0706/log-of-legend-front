@@ -1,5 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
+
+import { platformData } from "../reducers/apiReducer";
 
 const PlatformDataStyle = styled.div`
   width: 600px;
@@ -11,5 +14,16 @@ const PlatformDataStyle = styled.div`
 `;
 
 export default function PlatformData() {
-  return <PlatformDataStyle>asddsadsadasd</PlatformDataStyle>;
+  const { isLoaded, data } = useSelector(
+    (rootReducer) => rootReducer.apiReducer.platformData,
+    shallowEqual
+  );
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(platformData());
+  }, [dispatch]);
+
+  return <PlatformDataStyle>this is platformData</PlatformDataStyle>;
 }
