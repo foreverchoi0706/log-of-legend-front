@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { useSelector, useDispatch, shallowEqual } from "react-redux";
 
-import { inputed,unInputed } from "../reducers/userReducer";
+import { inputed,unInputed } from "../reducers/interfaceReducer";
 import Poroading from "./Poroading";
 
 const SearchStyle = styled.form`
@@ -26,7 +26,7 @@ const SearchStyle = styled.form`
 
 export default function Search() {
   const { isInputed } = useSelector(
-    (rootReducer) => rootReducer.userReducer,
+    (rootReducer) => rootReducer.interfaceReducer.inputState,
     shallowEqual
   );
 

@@ -20,7 +20,7 @@ const HomeStyle = styled.main`
 
 export default function Home() {
   const { isInputed } = useSelector(
-    (rootReducer) => rootReducer.userReducer,
+    (rootReducer) => rootReducer.interfaceReducer.inputState,
     shallowEqual
   );
 
