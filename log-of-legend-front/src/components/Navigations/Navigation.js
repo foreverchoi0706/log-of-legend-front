@@ -1,11 +1,10 @@
-import React from "react";
-import { shallowEqual, useSelector, useDispatch } from "react-redux";
+import React, { useState } from "react";
 import styled from "styled-components";
 import ChampionRotations from "./ChampionRotations";
 import PlatformData from "./PlatformData";
-import { clicked } from "../reducers/interfaceReducer";
 
 const NavigationStyle = styled.nav`
+  background-color: rgb(20, 20, 20);
   width: 600px;
   color: white;
   display: flex;
@@ -13,37 +12,56 @@ const NavigationStyle = styled.nav`
   .Navigation-menu {
     display: flex;
     button {
+      all: initial;
+      font-size: 0.8rem;
+      display: flex;
+      justify-content: center;
+      background-color: rgb(20, 20, 20);
+      box-sizing: border-box;
+      border: 1px solid white;
+      border-radius: 5px 5px 0px 0px;
+      color: white;
       cursor: pointer;
       flex-grow: 1;
     }
   }
   .Navigation-show {
-    animation: show-anime 1s linear;
+    border: 1px solid white;
+    border-radius: 0 0 5px 5px;
+    border-top: none;
   }
-  @keyframes show-anime {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
+
   @media (max-width: 600px) {
-    width: 100vw;
+    width: calc(100vw - 2px);
+    button {
+      font-size: 0.7rem;
+    }
+  }
+  @media (max-width: 340px) {
+    button {
+      font-size: 0.5rem;
+    }
   }
 `;
 
 export default function Navigation() {
-  const { championRotations, nowRanking, platformData } = useSelector(
-    (rootReducer) => rootReducer.interfaceReducer.navState,
-    shallowEqual
-  );
+  const initState = {
+    championRotations: false,
+    nowRanking: false,
+    platformData: false,
+  };
 
-  const dispatch = useDispatch();
+  const [isClicked, setIsClicked] = useState(initState);
 
   const handleClick = (e) => {
-    dispatch(clicked(e.target.name));
+    e.target.style.borderBottom = "none";
+    setIsClicked({
+      ...initState,
+      [e.target.name]: true,
+    });
   };
+
+  const { championRotations, nowRanking, platformData } = isClicked;
 
   return (
     <NavigationStyle>
@@ -61,7 +79,7 @@ export default function Navigation() {
       <div className="Navigation-show">
         {championRotations && <ChampionRotations />}
         {nowRanking && <div>nowRanking</div>}
-        {platformData && <PlatformData/>}
+        {platformData && <PlatformData />}
       </div>
     </NavigationStyle>
   );

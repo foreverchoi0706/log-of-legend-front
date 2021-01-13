@@ -1,31 +1,31 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useSelector, useDispatch, shallowEqual } from "react-redux";
-import Poroading from "../components/Poroading";
+import Poroading from "../Poroading";
 
-import { championRaotaions } from "../reducers/apiReducer";
+import { championRaotaions } from "../../reducers/apiReducer";
 
 const ChampionRotationsStyle = styled.div`
   .ChampionRotations-container {
     width: 600px;
+    padding: 20px 0 20px 0;
     color: white;
+
     display: grid;
-    grid-template-columns: repeat(5, 100px);
-    grid-template-rows: 80px 80px 80px;
+    grid-template-columns: repeat(auto-fill, 100px);
     justify-items: center;
     align-items: center;
-
-    justify-content: space-between;
+    justify-content: space-around;
     gap: 10px;
+
     img {
       border-radius: 5px;
-      width: 100px;
-      height: 80px;
+      height: 60px;
       cursor: pointer;
     }
   }
   @media (max-width: 600px) {
-    width: 100vw;
+    width: calc(100vw - 2px);
   }
 `;
 

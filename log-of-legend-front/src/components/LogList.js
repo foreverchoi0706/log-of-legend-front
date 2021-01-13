@@ -18,6 +18,27 @@ export default function LogList() {
       <Log />
       <Log />
       <Log />
+
+      <Log />
+      <Log />
+      <Log />
+      <Log />
+      <Log />
+      <Log />
+
+      <Log />
+      <Log />
+      <Log />
+      <Log />
+      <Log />
+      <Log />
+
+      <Log />
+      <Log />
+      <Log />
+      <Log />
+      <Log />
+      <Log />
     </LogListStyle>
   );
 }

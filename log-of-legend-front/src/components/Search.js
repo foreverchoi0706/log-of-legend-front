@@ -7,20 +7,35 @@ import Poroading from "./Poroading";
 
 const SearchStyle = styled.form`
   width: 600px;
+
   input {
+    background-color: rgb(20,20,20);
+    color : white;
     width: inherit;
     height: 50px;
+    box-sizing: border-box;
+    border : 1px solid white;
     border-radius: 5px;
-    border: none;
     padding: 0;
   }
   .Search-inputed {
+    background-color: rgb(20,20,20);
+    color : white;
     width: inherit;
+    box-sizing: border-box;
+    border : 1px solid white;
     border-radius: 0 0 5px 5px;
-    background-color: white;
   }
   @media (max-width: 600px) {
-    width: 100vw;
+    width: calc(100vw - 2px);
+    input {
+      font-size: 0.7rem;
+    }
+  }
+  @media (max-width: 340px) {
+    input {
+      font-size: 0.5rem;
+    }
   }
 `;
 

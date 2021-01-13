@@ -4,22 +4,24 @@ import styled from "styled-components";
 
 import banner from "../img/banner.jpg";
 
-const BannerStyle = styled.main`
+const BannerStyle = styled.div`
   width: 600px;
   display: flex;
   flex-direction: column;
   align-items: center;
   h1 {
     a {
-      color: yellow;
+      color: gold;
     }
   }
   img {
+    box-sizing: border-box;
+    border: 1px solid white;
     border-radius: 5px;
     width: inherit;
   }
   @media (max-width: 600px) {
-    width: 100vw;
+    width: calc(100vw - 2px);
   }
 `;
 

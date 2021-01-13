@@ -5,8 +5,11 @@ import riot from "../img/riot.png";
 
 const FooterStyle = styled.footer`
   width: 600px;
-  background-color: yellow;
-  border-radius : 5px;
+
+  background-color: gold;
+  box-sizing: border-box;
+  border: 1px solid white;
+  border-radius: 5px;
 
   display: flex;
   flex-direction: column;
@@ -23,16 +26,16 @@ const FooterStyle = styled.footer`
   }
 
   @media (max-width: 600px) {
-    width: 100vw;
+    width: calc(100vw - 2px);
   }
 `;
 
 export default function Footer() {
   return (
     <FooterStyle>
-      <strong>created by foreverchoi0706</strong>
+      <strong>©CopyRight All Reserved foreverChoi</strong>
       <strong>
-        API by
+        API Used By
         <img src={riot} alt="riot" />
       </strong>
     </FooterStyle>
