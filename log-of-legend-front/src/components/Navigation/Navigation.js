@@ -32,10 +32,7 @@ const NavigationStyle = styled.nav`
   }
 
   @media (max-width: 600px) {
-    width: calc(100vw - 2px);
-    button {
-      font-size: 0.7rem;
-    }
+    width: calc(100vw);
   }
   @media (max-width: 340px) {
     button {

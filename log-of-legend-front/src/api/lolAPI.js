@@ -9,7 +9,8 @@ const lolAPI = {
   },
 
   platformData : async ()  => {
-    return {};
+    const { data } = await axios.get(`${HOST}/platform-data`);
+    return data;
   },
   searchSummoner: () => {},
 };

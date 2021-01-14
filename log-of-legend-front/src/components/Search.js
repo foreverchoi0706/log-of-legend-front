@@ -1,33 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { useSelector, useDispatch, shallowEqual } from "react-redux";
 
-import { inputed,unInputed } from "../reducers/interfaceReducer";
 import Poroading from "./Poroading";
 
 const SearchStyle = styled.form`
   width: 600px;
 
   input {
-    background-color: rgb(20,20,20);
-    color : white;
+    background-color: rgb(20, 20, 20);
+    color: white;
     width: inherit;
     height: 50px;
     box-sizing: border-box;
-    border : 1px solid white;
+    border: 1px solid white;
     border-radius: 5px;
     padding: 0;
   }
   .Search-inputed {
-    background-color: rgb(20,20,20);
-    color : white;
+    background-color: rgb(20, 20, 20);
+    color: white;
     width: inherit;
     box-sizing: border-box;
-    border : 1px solid white;
+    border: 1px solid white;
     border-radius: 0 0 5px 5px;
   }
   @media (max-width: 600px) {
-    width: calc(100vw - 2px);
+    width: calc(100vw);
     input {
       font-size: 0.7rem;
     }
@@ -40,15 +39,14 @@ const SearchStyle = styled.form`
 `;
 
 export default function Search() {
-  const { isInputed } = useSelector(
-    (rootReducer) => rootReducer.interfaceReducer.inputState,
-    shallowEqual
-  );
-
-  const dispatch = useDispatch();
+  const [isInputed, setIsInputed] = useState(false);
 
   const handleChange = (e) => {
-    e.target.value ? dispatch(inputed()) : dispatch(unInputed());
+    if (e.target.value) {
+      setIsInputed(true);
+    } else {
+      setIsInputed(false);
+    }
   };
 
   return (

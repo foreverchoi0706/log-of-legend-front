@@ -7,6 +7,12 @@ import { platformData } from "../../reducers/apiReducer";
 const PlatformDataStyle = styled.div`
   width: 600px;
   color: white;
+  font-size: 0.8rem;
+  .PlatformData-container {
+    padding: 20px 0 20px 0;
+    display: flex;
+    justify-content : space-around;
+  }
 
   @media (max-width: 602px) {
     width: calc(100vw - 2px);
@@ -25,5 +31,17 @@ export default function PlatformData() {
     dispatch(platformData());
   }, [dispatch]);
 
-  return <PlatformDataStyle>this is platformData</PlatformDataStyle>;
+  return (
+    <PlatformDataStyle>
+      {isLoaded && data && (
+        <div className="PlatformData-container">
+          <strong>지역 : 아시아</strong>
+          <strong>국가 : ko_KR</strong>
+          <strong>서버상태 : 🟢</strong>
+          <strong>Client 버전 : ver11.1</strong>
+          <strong></strong>
+        </div>
+      )}
+    </PlatformDataStyle>
+  );
 }

@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { useSelector, useDispatch, shallowEqual } from "react-redux";
 
 import Banner from "./Banner";
 import Search from "./Search";
@@ -24,11 +23,6 @@ const HomeStyle = styled.main`
 `;
 
 export default function Home() {
-  const { isInputed } = useSelector(
-    (rootReducer) => rootReducer.interfaceReducer.inputState,
-    shallowEqual
-  );
-
   return (
     <HomeStyle>
       <Banner />

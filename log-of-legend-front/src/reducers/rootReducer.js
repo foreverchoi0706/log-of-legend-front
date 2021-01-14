@@ -1,10 +1,14 @@
 import { combineReducers } from "redux";
-import interfaceReducer from "./interfaceReducer";
-import apiReducer from "./apiReducer";
+import { all } from "redux-saga/effects";
+
+import apiReducer, { saga } from "./apiReducer";
 
 const rootReducer = combineReducers({
-  interfaceReducer,
   apiReducer,
 });
+
+export function* rootSaga() {
+  yield all(saga);
+}
 
 export default rootReducer;
