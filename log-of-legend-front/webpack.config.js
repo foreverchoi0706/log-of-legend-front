@@ -41,7 +41,10 @@ const config = {
   ],
   devServer: {
     hot: true,
-    overlay: true,
+    overlay: {
+      warnings: true,
+      errors: true,
+    },
     contentBase: path.join(__dirname, "public/"),
     host: "localhost",
     port: "8080",

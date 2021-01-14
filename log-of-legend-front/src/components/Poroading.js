@@ -7,7 +7,7 @@ const PoroadingStyle = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 50px;
+  padding: 30px;
   img {
     width: 100px;
     animation: jump-anime 0.5s linear infinite;

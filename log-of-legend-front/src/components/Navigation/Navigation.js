@@ -54,6 +54,10 @@ export default function Navigation() {
   const [isClicked, setIsClicked] = useState(initState);
 
   const handleClick = (e) => {
+    const buttons = e.target.parentElement.childNodes;
+    buttons.forEach((button) => {
+      button.style.borderBottom = "1px solid white";
+    });
     e.target.style.borderBottom = "none";
     setIsClicked({
       ...initState,

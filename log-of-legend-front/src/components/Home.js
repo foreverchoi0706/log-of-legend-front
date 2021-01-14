@@ -4,9 +4,9 @@ import { useSelector, useDispatch, shallowEqual } from "react-redux";
 
 import Banner from "./Banner";
 import Search from "./Search";
-import LogList from "./LogList";
+import LogList from "./LogList/LogList";
 import Footer from "./Footer";
-import Navigation from "./Navigations/Navigation";
+import Navigation from "./Navigation/Navigation";
 import ToTop from "./ToTop";
 
 const HomeStyle = styled.main`
