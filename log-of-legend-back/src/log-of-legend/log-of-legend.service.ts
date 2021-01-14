@@ -48,7 +48,7 @@ export class LogOfLegendService {
     return data;
   }
 
-  async summoner(summonerName: string): Promise<summoner[]> {
+  async summonerInfo(summonerName: string): Promise<summoner[]> {
     const {
       data: { id },
     } = await axios.get(
@@ -60,5 +60,22 @@ export class LogOfLegendService {
       config,
     );
     return data;
+  }
+
+  async matchList(summonerName: string): Promise<any> {
+    const {
+      data: { accountId },
+    } = await axios.get(
+      `https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/${summonerName}`,
+      config,
+    );
+    const {
+      data: { matches },
+    } = await axios.get(
+      `https://kr.api.riotgames.com/lol/match/v4/matchlists/by-account/${accountId}`,
+      config,
+    );
+    console.log(matches.length);
+    return matches;
   }
 }
