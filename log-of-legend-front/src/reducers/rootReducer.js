@@ -1,14 +1,16 @@
 import { combineReducers } from "redux";
 import { all } from "redux-saga/effects";
 
-import apiReducer, { saga } from "./apiReducer";
+import navigationReducer, { navigationSaga } from "./navigationReducer";
+import searchReducer, { searchSaga } from "./searchReducer";
 
 const rootReducer = combineReducers({
-  apiReducer,
+  navigationReducer,
+  searchReducer,
 });
 
 export function* rootSaga() {
-  yield all(saga);
+  yield all([navigationSaga(), searchSaga()]);
 }
 
 export default rootReducer;

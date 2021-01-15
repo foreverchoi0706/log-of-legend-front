@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useSelector, useDispatch, shallowEqual } from "react-redux";
 import Poroading from "../Poroading";
 
-import { championRaotaions } from "../../reducers/apiReducer";
+import { getChampionRaotaions } from "../../reducers/navigationReducer";
 
 const ChampionRotationsStyle = styled.div`
   .ChampionRotations-container {
@@ -31,15 +31,15 @@ const ChampionRotationsStyle = styled.div`
 
 export default function ChampionRotations() {
   const { isLoaded, data } = useSelector(
-    (rootReducer) => rootReducer.apiReducer.championRotations,
+    (rootReducer) => rootReducer.navigationReducer.championRotations,
     shallowEqual
   );
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(championRaotaions());
-  }, [dispatch, championRaotaions]);
+    dispatch(getChampionRaotaions());
+  }, [dispatch, getChampionRaotaions]);
 
   return (
     <ChampionRotationsStyle>

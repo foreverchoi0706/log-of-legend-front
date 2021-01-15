@@ -3,16 +3,19 @@ import axios from "axios";
 const HOST = "http://localhost:3000/log-of-legend";
 
 const lolAPI = {
-  championRotations: async () => {
+  getChampionRotations: async () => {
     const { data } = await axios.get(`${HOST}/champion-rotations`);
     return data;
   },
 
-  platformData : async ()  => {
+  getPlatformData: async () => {
     const { data } = await axios.get(`${HOST}/platform-data`);
     return data;
   },
-  searchSummoner: () => {},
+  searchSummoner: async (keyword) => {
+    const { data } = await axios.get(`${HOST}/summoner-info?summonerName=${keyword}`);
+    return data;
+  },
 };
 
 export default lolAPI;

@@ -28,10 +28,8 @@ export default function Home() {
       <Banner />
       <Navigation />
       <Search />
-      <LogList />
       <Footer />
-
-      <ToTop />
+      {/* <ToTop /> */}
     </HomeStyle>
   );
 }

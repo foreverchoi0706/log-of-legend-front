@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 
-import { platformData } from "../../reducers/apiReducer";
+import { getPlatformData } from "../../reducers/navigationReducer";
 
 const PlatformDataStyle = styled.div`
   width: 600px;
@@ -11,7 +11,7 @@ const PlatformDataStyle = styled.div`
   .PlatformData-container {
     padding: 20px 0 20px 0;
     display: flex;
-    justify-content : space-around;
+    justify-content: space-around;
   }
 
   @media (max-width: 602px) {
@@ -21,15 +21,15 @@ const PlatformDataStyle = styled.div`
 
 export default function PlatformData() {
   const { isLoaded, data } = useSelector(
-    (rootReducer) => rootReducer.apiReducer.platformData,
+    (rootReducer) => rootReducer.navigationReducer.platformData,
     shallowEqual
   );
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(platformData());
-  }, [dispatch]);
+    dispatch(getPlatformData());
+  }, [dispatch, getPlatformData]);
 
   return (
     <PlatformDataStyle>
