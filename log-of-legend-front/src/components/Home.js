@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import Banner from "./Banner";
-import Search from "./Search";
+import Search from "./Search/Search";
 import LogList from "./LogList/LogList";
 import Footer from "./Footer";
 import Navigation from "./Navigation/Navigation";

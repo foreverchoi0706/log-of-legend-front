@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import ChallengerRank from "./ChallengerRank";
 import ChampionRotations from "./ChampionRotations";
 import PlatformData from "./PlatformData";
 
@@ -35,8 +36,10 @@ const NavigationStyle = styled.nav`
     width: calc(100vw);
   }
   @media (max-width: 340px) {
-    button {
-      font-size: 0.5rem;
+    .Navigation-menu {
+      button {
+        font-size: 0.5rem;
+      }
     }
   }
 `;
@@ -79,7 +82,7 @@ export default function Navigation() {
       </div>
       <div className="Navigation-show">
         {championRotations && <ChampionRotations />}
-        {nowRanking && <div>nowRanking</div>}
+        {nowRanking && <ChallengerRank />}
         {platformData && <PlatformData />}
       </div>
     </NavigationStyle>

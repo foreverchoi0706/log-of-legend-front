@@ -11,15 +11,15 @@ export const search = (keyword) => ({ type: SEARCH, keyword });
 
 const searchDone = (data) => ({ type: SEARCH_DONE, data });
 
-const searchNone = (error) => ({ type: SEARCH_NONE, error });
+const searchNone = (error) => ({ type: SEARCH_NONE });
 
 function* AAA(action) {
   yield delay(1000);
   try {
     const data = yield call(lolAPI.searchSummoner, action.keyword);
-    put(searchDone(data));
+    yield put(searchDone(data));
   } catch (error) {
-    put(searchNone(error));
+    yield put(searchNone());
   }
 }
 
@@ -38,18 +38,24 @@ export default function searchReducer(state = initialState, action) {
   switch (action.type) {
     case SEARCH:
       return {
-        isSearched: false,
-        data: action.data,
+        result: {
+          isSearched: false,
+          data: null,
+        },
       };
     case SEARCH_DONE:
       return {
-        isSearched: true,
-        data: action.data,
+        result: {
+          isSearched: true,
+          data: action.data,
+        },
       };
     case SEARCH_NONE:
       return {
-        isSearched: true,
-        data: action.error,
+        result: {
+          isSearched: true,
+          data: null,
+        },
       };
     default:
       return state;

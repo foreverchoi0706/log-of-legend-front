@@ -8,12 +8,20 @@ const lolAPI = {
     return data;
   },
 
+  getChallengerRank: async () => {
+    const { data } = await axios.get(`${HOST}/challenger-rank`);
+    return data;
+  },
+
   getPlatformData: async () => {
     const { data } = await axios.get(`${HOST}/platform-data`);
     return data;
   },
+
   searchSummoner: async (keyword) => {
-    const { data } = await axios.get(`${HOST}/summoner-info?summonerName=${keyword}`);
+    const { data } = await axios.get(
+      `${HOST}/summoner-info?summonerName=${keyword}`
+    );
     return data;
   },
 };

@@ -9,10 +9,9 @@ const ChampionRotationsStyle = styled.div`
   .ChampionRotations-container {
     width: 600px;
     padding: 20px 0 20px 0;
-    color: white;
 
     display: grid;
-    grid-template-columns: repeat(auto-fill, 100px);
+    grid-template-columns: repeat(auto-fill, 121px);
     justify-items: center;
     align-items: center;
     justify-content: space-around;
@@ -20,13 +19,20 @@ const ChampionRotationsStyle = styled.div`
 
     img {
       border-radius: 5px;
-      height: 60px;
+      height: 71px;
       cursor: pointer;
     }
   }
   @media (max-width: 600px) {
-    width: calc(100vw - 2px);
+    .ChampionRotations-container {
+      width: calc(100vw - 2px);
+      grid-template-columns: repeat(auto-fill, 81px);
+      img {
+        height: 48px;
+      }
+    }
   }
+
 `;
 
 export default function ChampionRotations() {

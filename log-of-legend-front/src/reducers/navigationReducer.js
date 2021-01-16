@@ -5,6 +5,10 @@ const GET_CHAMPION_ROTATIONS = "GET_CHAMPION_ROTATIONS";
 
 const GET_CHAMPION_ROTATIONS_SUCCESS = "GET_CHAMPION_ROTATIONS_SUCCESS";
 
+const GET_CHALLENGER_RANK = "GET_CHALLENGER_RANK";
+
+const GET_CHALLENGER_RANK_SUCCESS = "GET_CHALLENGER_RANK_SUCCESS";
+
 const GET_PLATFORM_DATA = "GET_PLATFORM_DATA";
 
 const GET_PLATFORM_DATA_SUCCESS = "GET_PLATFORM_DATA_SUCCESS";
@@ -13,6 +17,13 @@ export const getChampionRaotaions = () => ({ type: GET_CHAMPION_ROTATIONS });
 
 const getChampionRaotaionsSuccess = (data) => ({
   type: GET_CHAMPION_ROTATIONS_SUCCESS,
+  data,
+});
+
+export const getChallengerRank = () => ({ type: GET_CHALLENGER_RANK });
+
+const getChallengerRankSuccess = (data) => ({
+  type: GET_CHALLENGER_RANK_SUCCESS,
   data,
 });
 
@@ -28,17 +39,28 @@ function* getChampionRaotaionsSaga() {
   yield put(getChampionRaotaionsSuccess(data));
 }
 
+function* getChallengerRankSaga() {
+  const data = yield call(lolAPI.getChallengerRank);
+  yield put(getChallengerRankSuccess(data));
+}
+
 function* getPlatformDataSaga() {
   const data = yield call(lolAPI.getPlatformData);
   yield put(getPlatformDataSuccess(data));
 }
+
 export function* navigationSaga() {
   yield takeEvery(GET_CHAMPION_ROTATIONS, getChampionRaotaionsSaga);
+  yield takeEvery(GET_CHALLENGER_RANK, getChallengerRankSaga);
   yield takeEvery(GET_PLATFORM_DATA, getPlatformDataSaga);
 }
 
 const initialState = {
   championRotations: {
+    isLoaded: false,
+    data: null,
+  },
+  challengerRank: {
     isLoaded: false,
     data: null,
   },
@@ -54,6 +76,14 @@ const navigationReducer = (state = initialState, action) => {
       return {
         ...state,
         championRotations: {
+          isLoaded: true,
+          data: action.data,
+        },
+      };
+    case GET_CHALLENGER_RANK_SUCCESS:
+      return {
+        ...state,
+        challengerRank: {
           isLoaded: true,
           data: action.data,
         },

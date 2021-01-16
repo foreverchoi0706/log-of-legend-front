@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { useSelector, useDispatch, shallowEqual } from "react-redux";
-import { search } from "../reducers/searchReducer";
+import { search } from "../../reducers/searchReducer";
 
-import Poroading from "./Poroading";
+import Poroading from "../Poroading";
 
 const SearchStyle = styled.form`
   width: 600px;
@@ -40,12 +40,11 @@ const SearchStyle = styled.form`
 `;
 
 export default function Search() {
-  const [isInputed, setIsInputed] = useState(false);
-
   const { isSearched, data } = useSelector(
     (rootReducer) => rootReducer.searchReducer.result,
     shallowEqual
   );
+  const [isInputed, setIsInputed] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -66,15 +65,12 @@ export default function Search() {
         placeholder=" 소환사명을 입력해 주세요"
         onChange={handleChange}
       />
-
-      <div className="Search-inputed">
-        {isInputed && (
-          <>
-            {isSearched || <Poroading />}
-            {isSearched && <div>{JSON.stringify(data)}</div>}{" "}
-          </>
-        )}
-      </div>
+      {isInputed && (
+        <div className="Search-inputed">
+          {isSearched || <Poroading />}
+          {isSearched && <div>{JSON.stringify(data[0])}</div>}
+        </div>
+      )}
     </SearchStyle>
   );
 }
