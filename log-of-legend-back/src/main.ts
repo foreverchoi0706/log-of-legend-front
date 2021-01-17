@@ -1,11 +1,10 @@
 import { NestFactory } from '@nestjs/core';
-import { fstat } from 'fs';
 import { AppModule } from './app.module';
 const fs = require("fs");
 
 const httpsOptions = {
-  key: fs.readFileSync('../../../private.pem'),
-  cert: fs.readFileSync('../../../public.pem'),
+  key: fs.readFileSync('$HOME/private.pem'),
+  cert: fs.readFileSync('$HOME/cert.pem'),
 };
 
 async function bootstrap() {
@@ -17,6 +16,7 @@ async function bootstrap() {
     origin: '*',
     allowedHeaders: 'Origin, X-Requested-With, Content-Type, Accept',
   });
+  
   await app.listen(3000);
 }
 bootstrap();
