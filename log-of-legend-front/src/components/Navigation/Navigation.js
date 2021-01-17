@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { memo, useState } from "react";
 import styled from "styled-components";
 import ChallengerRank from "./ChallengerRank";
 import ChampionRotations from "./ChampionRotations";
@@ -44,7 +44,7 @@ const NavigationStyle = styled.nav`
   }
 `;
 
-export default function Navigation() {
+function Navigation() {
   const initState = {
     championRotations: false,
     nowRanking: false,
@@ -60,8 +60,7 @@ export default function Navigation() {
     });
     e.target.style.borderBottom = "none";
     setIsClicked({
-      ...initState,
-      [e.target.name]: true,
+      [e.target.name]: !isClicked[e.target.name],
     });
   };
 
@@ -88,3 +87,4 @@ export default function Navigation() {
     </NavigationStyle>
   );
 }
+export default memo(Navigation);

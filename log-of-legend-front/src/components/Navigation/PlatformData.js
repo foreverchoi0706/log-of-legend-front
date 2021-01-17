@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { memo, useEffect } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 
@@ -18,8 +18,7 @@ const PlatformDataStyle = styled.div`
     width: calc(100vw - 2px);
   }
 `;
-
-export default function PlatformData() {
+function PlatformData() {
   const { isLoaded, data } = useSelector(
     (rootReducer) => rootReducer.navigationReducer.platformData,
     shallowEqual
@@ -45,3 +44,5 @@ export default function PlatformData() {
     </PlatformDataStyle>
   );
 }
+
+export default memo(PlatformData);

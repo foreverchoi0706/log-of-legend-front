@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { memo, useEffect } from "react";
 import styled from "styled-components";
 import { useSelector, useDispatch, shallowEqual } from "react-redux";
 import Poroading from "../Poroading";
@@ -32,10 +32,9 @@ const ChampionRotationsStyle = styled.div`
       }
     }
   }
-
 `;
 
-export default function ChampionRotations() {
+function ChampionRotations() {
   const { isLoaded, data } = useSelector(
     (rootReducer) => rootReducer.navigationReducer.championRotations,
     shallowEqual
@@ -62,3 +61,5 @@ export default function ChampionRotations() {
     </ChampionRotationsStyle>
   );
 }
+
+export default memo(ChampionRotations);

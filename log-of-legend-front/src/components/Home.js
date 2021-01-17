@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 import Banner from "./Banner";
-import Search from "./Search/Search";
-import LogList from "./LogList/LogList";
+import Search from "./Search";
+
 import Footer from "./Footer";
 import Navigation from "./Navigation/Navigation";
 import ToTop from "./ToTop";
+import SummonerInfo from "./SearchResult/SummonerInfo";
 
 const HomeStyle = styled.main`
   display: flex;
@@ -23,13 +24,26 @@ const HomeStyle = styled.main`
 `;
 
 export default function Home() {
+  const [searchResult, setSearchResult] = useState({
+    isClicked: false,
+    summoner: null,
+  });
+
+  const handleSearchResultClick = (summoner) => {
+    setSearchResult({
+      isClicked: true,
+      summoner,
+    });
+  };
+
   return (
     <HomeStyle>
       <Banner />
       <Navigation />
-      <Search />
+      <Search handleSearchResultClick={handleSearchResultClick} />
+      {searchResult.isClicked && <SummonerInfo {...searchResult.summoner} />}
       <Footer />
-      {/* <ToTop /> */}
+      <ToTop />
     </HomeStyle>
   );
 }

@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { getChallengerRank } from "../../reducers/navigationReducer";
-import Summoner from "../Summoner";
 
 import Emblem_Iron from "../../img/emblems/Emblem_Iron.png";
 import Emblem_Bronze from "../../img/emblems/Emblem_Bronze.png";
@@ -63,7 +62,7 @@ const tierDivision = {
 };
 
 export default function ChallengerRank({ tier }) {
-  const { isLoaded, data } = useSelector(
+  const { isLoaded, entries } = useSelector(
     (rootReducer) => rootReducer.navigationReducer.challengerRank
   );
 
@@ -76,7 +75,7 @@ export default function ChallengerRank({ tier }) {
   return (
     <ChallengerRankStyle>
       {isLoaded &&
-        data.entries.map((summoner) => (
+        entries.map((summoner) => (
           <div key={summoner.summonerId} className="Summoner-container">
             <img
               className="Summoner-tier"

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { useSelector, useDispatch, shallowEqual } from "react-redux";
-import { search } from "../../reducers/searchReducer";
+import { search } from "../reducers/searchReducer";
 
-import Poroading from "../Poroading";
+import Poroading from "./Poroading";
 
 const SearchStyle = styled.form`
   width: 600px;
@@ -25,7 +25,19 @@ const SearchStyle = styled.form`
     box-sizing: border-box;
     border: 1px solid white;
     border-radius: 0 0 5px 5px;
+    .Search-result {
+      padding: 15px;
+      cursor: pointer;
+
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      .Search-profile {
+        width: 50px;
+      }
+    }
   }
+
   @media (max-width: 600px) {
     width: calc(100vw);
     input {
@@ -39,7 +51,7 @@ const SearchStyle = styled.form`
   }
 `;
 
-export default function Search() {
+export default function Search({ handleSearchResultClick }) {
   const { isSearched, data } = useSelector(
     (rootReducer) => rootReducer.searchReducer.result,
     shallowEqual
@@ -66,9 +78,23 @@ export default function Search() {
         onChange={handleChange}
       />
       {isInputed && (
-        <div className="Search-inputed">
+        <div className="Search-inputed" onClick={() => setIsInputed("")}>
           {isSearched || <Poroading />}
-          {isSearched && <div>{JSON.stringify(data[0])}</div>}
+          {isSearched &&
+            data &&
+            data.map((summoner) => (
+              <div
+                className="Search-result"
+                onClick={() => handleSearchResultClick(summoner)}
+              >
+                <img
+                  className="Search-profile"
+                  src={`http://ddragon.leagueoflegends.com/cdn/11.1.1/img/profileicon/${summoner.profileIconId}.png`}
+                />
+                <strong>{summoner.summonerName}</strong>
+                <i>{`${summoner.tier}.${summoner.rank}`}</i>
+              </div>
+            ))}
         </div>
       )}
     </SearchStyle>
