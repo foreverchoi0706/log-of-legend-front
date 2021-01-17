@@ -1,7 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { fstat } from 'fs';
 import { AppModule } from './app.module';
-import fs from 'fs';
+const fs = require("fs");
 
 const httpsOptions = {
   key: fs.readFileSync('../../../private.pem'),
