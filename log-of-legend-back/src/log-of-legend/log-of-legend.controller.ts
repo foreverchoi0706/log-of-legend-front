@@ -3,6 +3,7 @@ import { LogOfLegendService } from './log-of-legend.service';
 import { championRotationsDto } from './dto/championRotations.dto';
 import { platformData } from './dto/platformData.dto';
 import { summoner } from './dto/summoner.dto';
+import { challengerRank } from './dto/challengerRank.doto';
 
 @Controller('log-of-legend')
 export class LogOfLegendController {
@@ -25,8 +26,15 @@ export class LogOfLegendController {
   summonerInfo(
     @Query('summonerName') summonerName: string,
   ): Promise<summoner[]> {
+    console.log(summonerName);
     return this.logOfLegnedService.summonerInfo(encodeURI(summonerName));
   }
+  //실시간랭크순위
+  @Get('challenger-rank')
+  challengerRank(): Promise<challengerRank> {
+    return this.logOfLegnedService.challengerRank();
+  }
+
   //전적
   @Get('matchList')
   matchList(@Query('summonerName') summonerName: string): Promise<any> {

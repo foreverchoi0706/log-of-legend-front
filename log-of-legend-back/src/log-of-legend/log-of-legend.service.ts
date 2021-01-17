@@ -4,6 +4,7 @@ import axios from 'axios';
 import { championRotationsDto } from './dto/championRotations.dto';
 import { platformData } from './dto/platformData.dto';
 import { summoner } from './dto/summoner.dto';
+import { challengerRank } from './dto/challengerRank.doto';
 
 const API_KEY = 'RGAPI-4d0083e2-daec-49ba-8e63-b3eec2ed4be0';
 
@@ -40,7 +41,7 @@ export class LogOfLegendService {
     return result;
   }
 
-  async platformData(): Promise<platformData> {
+  async platformData(): Promise<any> {
     const { data } = await axios.get(
       'https://kr.api.riotgames.com/lol/status/v4/platform-data',
       config,
@@ -48,9 +49,29 @@ export class LogOfLegendService {
     return data;
   }
 
+  async challengerRank(): Promise<challengerRank> {
+    const {
+      data: { entries },
+    } = await axios.get(
+      'https://kr.api.riotgames.com/lol/league/v4/challengerleagues/by-queue/RANKED_SOLO_5x5',
+      config,
+    );
+
+    for (let i: number = 0; i < entries.length; i++) {
+      for (let j: number = i + 1; j < entries.length; j++) {
+        if (entries[i].leaguePoints < entries[j].leaguePoints) {
+          const temp = entries[i];
+          entries[i] = entries[j];
+          entries[j] = temp;
+        }
+      }
+    }
+    return entries;
+  }
+
   async summonerInfo(summonerName: string): Promise<summoner[]> {
     const {
-      data: { id },
+      data: { id, profileIconId },
     } = await axios.get(
       `https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/${summonerName}`,
       config,
@@ -59,6 +80,8 @@ export class LogOfLegendService {
       `https://kr.api.riotgames.com/lol/league/v4/entries/by-summoner/${id}`,
       config,
     );
+    data[0].profileIconId = profileIconId;
+    console.log(data);
     return data;
   }
 
