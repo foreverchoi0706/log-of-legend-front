@@ -37,7 +37,7 @@ export class LogOfLegendController {
 
   //전적
   @Get('matchList')
-  matchList(@Query('summonerName') summonerName: string): Promise<any> {
-    return this.logOfLegnedService.matchList(encodeURI(summonerName));
+  matchList(@Query('accountId') accountId: number): Promise<any> {
+    return this.logOfLegnedService.matchList(accountId);
   }
 }

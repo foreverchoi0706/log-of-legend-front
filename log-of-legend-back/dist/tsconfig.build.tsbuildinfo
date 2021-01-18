@@ -1207,13 +1207,13 @@
         "affectsGlobalScope": false
       },
       "../src/log-of-legend/log-of-legend.service.ts": {
-        "version": "cfd0c10f0582123ef4c6edc24634e01e9e4130bb0ada91c25b8494dadd2b6528",
-        "signature": "911d5254e11b21812c3bfe39f566c6bf98ebc2292c745193615af5f265fc12d7",
+        "version": "15edee7b96018d02858d340098ccd4e79c86460ca34f8bdbab203c5fd9ba69c2",
+        "signature": "30eb33d1ea4a9ec679919e0c6244ce5400639d54d8d99d8f7aa2861529a49908",
         "affectsGlobalScope": false
       },
       "../src/log-of-legend/log-of-legend.controller.ts": {
-        "version": "384a3b35cdcb9589cc03ac602b4f4209a3e69c6e42ebb5e818e47dcd8be8b9e7",
-        "signature": "2a149bfb78af92bd27d91950d3512b840f23ce33af490b302e97461d83959f41",
+        "version": "fab2f7c5a9aa714be2d1bab58b0af879420d1216dd3b5cf87833d9bd667f7f82",
+        "signature": "1aa96302d12f3a4fdd4d7fd3e5564bc1f5bcc1d2a8535d907712ab8651707195",
         "affectsGlobalScope": false
       },
       "../src/log-of-legend/log-of-legend.module.ts": {
@@ -1407,7 +1407,7 @@
         "affectsGlobalScope": false
       },
       "../src/main.ts": {
-        "version": "7d22e052b7388a541b8999e0097bc554df068cf5da410428cf43942aeeb6ec3a",
+        "version": "8e5b89d7d61b80abe4757ecbc0aaec8d3856fef02d6eb960bc980a63cd3239e8",
         "signature": "f761c91419d0a89422a0004ef1a92929dd4d2d5e5c16758654d8b0467d1998c6",
         "affectsGlobalScope": false
       },
@@ -4567,6 +4567,7 @@
       "../src/log-of-legend/log-of-legend.service.ts": [
         "../src/log-of-legend/dto/challengerrank.doto.ts",
         "../src/log-of-legend/dto/championrotations.dto.ts",
+        "../src/log-of-legend/dto/platformdata.dto.ts",
         "../src/log-of-legend/dto/summoner.dto.ts"
       ]
     },
@@ -4960,7 +4961,8 @@
       "../src/log-of-legend/dto/summoner.dto.ts",
       "../src/log-of-legend/log-of-legend.controller.ts",
       "../src/log-of-legend/log-of-legend.module.ts",
-      "../src/log-of-legend/log-of-legend.service.ts"
+      "../src/log-of-legend/log-of-legend.service.ts",
+      "../src/main.ts"
     ]
   },
   "version": "4.1.3"

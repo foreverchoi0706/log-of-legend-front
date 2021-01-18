@@ -41,7 +41,7 @@ export class LogOfLegendService {
     return result;
   }
 
-  async platformData(): Promise<any> {
+  async platformData(): Promise<platformData> {
     const { data } = await axios.get(
       'https://kr.api.riotgames.com/lol/status/v4/platform-data',
       config,
@@ -80,25 +80,50 @@ export class LogOfLegendService {
       `https://kr.api.riotgames.com/lol/league/v4/entries/by-summoner/${id}`,
       config,
     );
+
+    const championMastery = await axios.get(
+      `https://kr.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/${id}`,
+      config,
+    );
+
+    for (let i: number = 0; i < championMastery.data.length; i++) {
+      for (let j: number = i + 1; j < championMastery.data.length; j++) {
+        if (
+          championMastery.data[i].lastPlayTime <
+          championMastery.data[j].lastPlayTime
+        ) {
+          const temp = championMastery.data[i];
+          championMastery.data[i] = championMastery.data[j];
+          championMastery.data[j] = temp;
+        }
+      }
+    }
+    const sortedchampionMastery = championMastery.data.slice(0, 10);
+    for (let i: number = 0; i < sortedchampionMastery.length; i++) {
+      for (let j: number = i + 1; j < sortedchampionMastery.length; j++) {
+        if (
+          sortedchampionMastery[i].championLevel <
+          sortedchampionMastery[j].championLevel
+        ) {
+          const temp = sortedchampionMastery[i];
+          sortedchampionMastery[i] = sortedchampionMastery[j];
+          sortedchampionMastery[j] = temp;
+        }
+      }
+    }
+
     data[0].profileIconId = profileIconId;
-    console.log(data);
+    data[0].championMastery = sortedchampionMastery;
+
     return data;
   }
 
-  async matchList(summonerName: string): Promise<any> {
-    const {
-      data: { accountId },
-    } = await axios.get(
-      `https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/${summonerName}`,
-      config,
-    );
-    const {
-      data: { matches },
-    } = await axios.get(
+  async matchList(accountId: number): Promise<any> {
+    const { data } = await axios.get(
       `https://kr.api.riotgames.com/lol/match/v4/matchlists/by-account/${accountId}`,
       config,
     );
-    console.log(matches.length);
-    return matches;
+
+    return data;
   }
 }

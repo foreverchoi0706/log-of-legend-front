@@ -10,5 +10,5 @@ export declare class LogOfLegendController {
     platformData(): Promise<platformData>;
     summonerInfo(summonerName: string): Promise<summoner[]>;
     challengerRank(): Promise<challengerRank>;
-    matchList(summonerName: string): Promise<any>;
+    matchList(accountId: number): Promise<any>;
 }

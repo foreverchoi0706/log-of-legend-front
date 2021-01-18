@@ -32,8 +32,8 @@ let LogOfLegendController = class LogOfLegendController {
     challengerRank() {
         return this.logOfLegnedService.challengerRank();
     }
-    matchList(summonerName) {
-        return this.logOfLegnedService.matchList(encodeURI(summonerName));
+    matchList(accountId) {
+        return this.logOfLegnedService.matchList(accountId);
     }
 };
 __decorate([
@@ -63,9 +63,9 @@ __decorate([
 ], LogOfLegendController.prototype, "challengerRank", null);
 __decorate([
     common_1.Get('matchList'),
-    __param(0, common_1.Query('summonerName')),
+    __param(0, common_1.Query('accountId')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
+    __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", Promise)
 ], LogOfLegendController.prototype, "matchList", null);
 LogOfLegendController = __decorate([

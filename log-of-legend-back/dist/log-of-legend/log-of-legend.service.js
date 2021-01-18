@@ -50,15 +50,35 @@ let LogOfLegendService = class LogOfLegendService {
     async summonerInfo(summonerName) {
         const { data: { id, profileIconId }, } = await axios_1.default.get(`https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/${summonerName}`, config);
         const { data } = await axios_1.default.get(`https://kr.api.riotgames.com/lol/league/v4/entries/by-summoner/${id}`, config);
+        const championMastery = await axios_1.default.get(`https://kr.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/${id}`, config);
+        for (let i = 0; i < championMastery.data.length; i++) {
+            for (let j = i + 1; j < championMastery.data.length; j++) {
+                if (championMastery.data[i].lastPlayTime <
+                    championMastery.data[j].lastPlayTime) {
+                    const temp = championMastery.data[i];
+                    championMastery.data[i] = championMastery.data[j];
+                    championMastery.data[j] = temp;
+                }
+            }
+        }
+        const sortedchampionMastery = championMastery.data.slice(0, 10);
+        for (let i = 0; i < sortedchampionMastery.length; i++) {
+            for (let j = i + 1; j < sortedchampionMastery.length; j++) {
+                if (sortedchampionMastery[i].championLevel <
+                    sortedchampionMastery[j].championLevel) {
+                    const temp = sortedchampionMastery[i];
+                    sortedchampionMastery[i] = sortedchampionMastery[j];
+                    sortedchampionMastery[j] = temp;
+                }
+            }
+        }
         data[0].profileIconId = profileIconId;
-        console.log(data);
+        data[0].championMastery = sortedchampionMastery;
         return data;
     }
-    async matchList(summonerName) {
-        const { data: { accountId }, } = await axios_1.default.get(`https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/${summonerName}`, config);
-        const { data: { matches }, } = await axios_1.default.get(`https://kr.api.riotgames.com/lol/match/v4/matchlists/by-account/${accountId}`, config);
-        console.log(matches.length);
-        return matches;
+    async matchList(accountId) {
+        const { data } = await axios_1.default.get(`https://kr.api.riotgames.com/lol/match/v4/matchlists/by-account/${accountId}`, config);
+        return data;
     }
 };
 LogOfLegendService = __decorate([
