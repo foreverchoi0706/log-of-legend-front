@@ -2,7 +2,7 @@ import React, { memo, useEffect } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 
-import { getPlatformData } from "../../reducers/navigationReducer";
+import { getPlatformData } from "../../util/reducers/navigationReducer";
 
 const PlatformDataStyle = styled.div`
   width: 600px;

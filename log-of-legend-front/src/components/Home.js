@@ -41,7 +41,7 @@ export default function Home() {
       <Banner />
       <Navigation />
       <Search handleSearchResultClick={handleSearchResultClick} />
-      {searchResult.isClicked && <SummonerInfo {...searchResult.summoner} />}
+      {!searchResult.isClicked && <SummonerInfo {...searchResult.summoner} />}
       <Footer />
       <ToTop />
     </HomeStyle>

@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Match from "./Match";
 
 const MatchListStyle = styled.section`
-  width: 600px;
+  width: inherit;
   display: flex;
   flex-direction: column;
   gap: 5px;

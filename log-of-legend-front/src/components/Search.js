@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { useSelector, useDispatch, shallowEqual } from "react-redux";
-import { search } from "../reducers/searchReducer";
+import { search } from "../util/reducers/searchReducer";
 
 import Poroading from "./Poroading";
 

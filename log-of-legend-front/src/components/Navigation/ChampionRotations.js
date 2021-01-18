@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useSelector, useDispatch, shallowEqual } from "react-redux";
 import Poroading from "../Poroading";
 
-import { getChampionRaotaions } from "../../reducers/navigationReducer";
+import { getChampionRaotaions } from "../../util/reducers/navigationReducer";
 
 const ChampionRotationsStyle = styled.div`
   .ChampionRotations-container {
