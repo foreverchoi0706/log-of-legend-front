@@ -5,11 +5,16 @@ import ChampionRotations from "./ChampionRotations";
 import PlatformData from "./PlatformData";
 
 const NavigationStyle = styled.nav`
-  background-color: rgb(20, 20, 20);
   width: 600px;
-  color: white;
   display: flex;
   flex-direction: column;
+
+  background-color: var(--theme-color-bg);
+  box-sizing: border-box;
+  border-radius: 0 0 5px 5px;
+
+  color: var(--theme-color-border);
+
   .Navigation-menu {
     display: flex;
     button {
@@ -17,17 +22,18 @@ const NavigationStyle = styled.nav`
       font-size: 0.8rem;
       display: flex;
       justify-content: center;
-      background-color: rgb(20, 20, 20);
-      box-sizing: border-box;
-      border: 1px solid white;
-      border-radius: 5px 5px 0px 0px;
-      color: white;
-      cursor: pointer;
       flex-grow: 1;
+      cursor: pointer;
+
+      background-color: var(--theme-color-bg);
+      box-sizing: border-box;
+      border-radius: 5px 5px 0px 0px;
+      border: 1px solid var(--theme-color-border);
+      color: var(--theme-color-border);
     }
   }
   .Navigation-show {
-    border: 1px solid white;
+    border: 1px solid var(--theme-color-border);
     border-radius: 0 0 5px 5px;
     border-top: none;
   }
@@ -56,7 +62,7 @@ function Navigation() {
   const handleClick = (e) => {
     const buttons = e.target.parentElement.childNodes;
     buttons.forEach((button) => {
-      button.style.borderBottom = "1px solid white";
+      button.style.borderBottom = "1px solid var(--theme-color-border)";
     });
     e.target.style.borderBottom = "none";
     setIsClicked({

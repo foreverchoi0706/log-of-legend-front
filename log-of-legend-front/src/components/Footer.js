@@ -5,17 +5,17 @@ import riot from "../img/riot.png";
 
 const FooterStyle = styled.footer`
   width: 600px;
-
-  background-color: gold;
-  box-sizing: border-box;
-  border: 1px solid white;
-  border-radius: 5px;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 10px;
+
+  background-color: var(--theme-color-bg);
+  box-sizing: border-box;
+  border-radius: 0 0 5px 5px;
+  border: 1px solid var(--theme-color-border);
+  color: var(--theme-color-border);
   strong {
     display: flex;
     align-items: center;

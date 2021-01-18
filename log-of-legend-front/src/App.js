@@ -14,6 +14,9 @@ const GlobalStyle = createGlobalStyle`
     background-size : 100vw 100vh;
     background-repeat : no-repeat;
     background-color : rgb(0, 0, 0);
+    * {
+      color : var(   --theme-color-border);
+    }
   }
 `;
 

@@ -15,9 +15,9 @@ const BannerStyle = styled.div`
     }
   }
   img {
-    box-sizing: border-box;
-    border: 1px solid white;
+    border: 1px solid var(--theme-color-border);
     border-radius: 5px;
+    box-sizing: border-box;
     width: inherit;
   }
   @media (max-width: 600px) {

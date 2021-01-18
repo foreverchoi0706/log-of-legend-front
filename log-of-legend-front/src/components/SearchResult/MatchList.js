@@ -20,14 +20,7 @@ function MatchList() {
   return (
     <MatchListStyle>
       <Match />
-      <Match />
-      <Match />
-      <Match />
-      <Match />
-      <Match />
-      <Match />
-      <Match />
-      <Match />
+      <Match /> <Match />
       <Match />
     </MatchListStyle>
   );
