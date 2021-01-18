@@ -1,10 +1,12 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-const fs = require("fs");
+const fs = require('fs');
+
+const PORT = process.env.PORT || 443; 
 
 const httpsOptions = {
-  key: fs.readFileSync('$HOME/private.pem'),
-  cert: fs.readFileSync('$HOME/cert.pem'),
+  key: fs.readFileSync(__dirname + '/secrets/key.pem'),
+  cert: fs.readFileSync(__dirname + '/secrets/cert.pem'),
 };
 
 async function bootstrap() {
@@ -16,7 +18,7 @@ async function bootstrap() {
     origin: '*',
     allowedHeaders: 'Origin, X-Requested-With, Content-Type, Accept',
   });
-  
-  await app.listen(3000);
+
+  await app.listen(PORT);
 }
 bootstrap();
