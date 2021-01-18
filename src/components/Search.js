@@ -91,7 +91,9 @@ export default function Search({ handleSearchResultClick }) {
               >
                 <img
                   className="Search-profile"
-                  src={`http://ddragon.leagueoflegends.com/cdn/11.1.1/img/profileicon/${summoner.profileIconId}.png`}
+                  src={`http://ddragon.leagueoflegends.com/cdn/11.1.1/img/profileicon/${
+                    summoner.profileIconId ? summoner.profileIconId : 0
+                  }.png`}
                 />
                 <strong>{summoner.summonerName}</strong>
                 <i>{`${summoner.tier}.${summoner.rank}`}</i>

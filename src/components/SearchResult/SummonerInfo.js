@@ -8,8 +8,7 @@ const SummonerInfoStyle = styled.div`
   width: 600px;
 
   box-sizing: border-box;
- 
- 
+
   border-radius: 5px;
 
   @media (max-width: 600px) {
@@ -21,7 +20,6 @@ function SummonerInfo(summoner) {
   return (
     <SummonerInfoStyle>
       <Summoner {...summoner} />
-      
       <MatchList {...summoner} />
     </SummonerInfoStyle>
   );

@@ -1,5 +1,5 @@
-import React, { useState, memo } from "react";
-import { useDispatch } from "react-redux";
+import React, { memo } from "react";
+
 import styled from "styled-components";
 
 import tierDivision from "../../util/tierDivision";
@@ -22,11 +22,6 @@ const SummonerStyle = styled.div`
 `;
 
 function Summoner(summoner) {
-
-  const dispatch = useDispatch();
-
-  useEffect(() => {}, []);
-
   return (
     <SummonerStyle>
       <img className="Summoner-tier" src={tierDivision[summoner.tier]}></img>
