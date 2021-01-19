@@ -15,6 +15,12 @@ export class LogOfLegendController {
     return this.logOfLegnedService.championRotations();
   }
 
+  //실시간랭크순위
+  @Get('challenger-rank')
+  challengerRank(): Promise<challengerRank> {
+    return this.logOfLegnedService.challengerRank();
+  }
+
   //서버상태
   @Get('platform-data')
   platformData(): Promise<platformData> {
@@ -28,11 +34,6 @@ export class LogOfLegendController {
   ): Promise<summoner[]> {
     console.log(summonerName);
     return this.logOfLegnedService.summonerInfo(encodeURI(summonerName));
-  }
-  //실시간랭크순위
-  @Get('challenger-rank')
-  challengerRank(): Promise<challengerRank> {
-    return this.logOfLegnedService.challengerRank();
   }
 
   //전적
