@@ -1,5 +1,5 @@
 import { put, call, takeEvery } from "redux-saga/effects";
-import lolAPI from "../api/lolAPI";
+import api from "../api/api";
 
 const GET_CHAMPION_ROTATIONS = "GET_CHAMPION_ROTATIONS";
 
@@ -35,17 +35,17 @@ const getPlatformDataSuccess = (data) => ({
 });
 
 function* getChampionRaotaionsSaga() {
-  const entries = yield call(lolAPI.getChampionRotations);
+  const entries = yield call(api.getChampionRotations);
   yield put(getChampionRaotaionsSuccess(entries));
 }
 
 function* getChallengerRankSaga() {
-  const data = yield call(lolAPI.getChallengerRank);
+  const data = yield call(api.getChallengerRank);
   yield put(getChallengerRankSuccess(data));
 }
 
 function* getPlatformDataSaga() {
-  const data = yield call(lolAPI.getPlatformData);
+  const data = yield call(api.getPlatformData);
   yield put(getPlatformDataSuccess(data));
 }
 

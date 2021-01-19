@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 import Banner from "./Banner";
-import Search from "./Search";
+import Search from "./Search/Search";
 
 import Footer from "./Footer";
 import Navigation from "./Navigation/Navigation";
 import ToTop from "./ToTop";
-import SummonerInfo from "./SearchResult/SummonerInfo";
+import SummonerInfo from "./Search/SummonerInfo";
 
 const HomeStyle = styled.main`
   display: flex;

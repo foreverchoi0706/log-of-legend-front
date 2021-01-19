@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { useSelector, useDispatch, shallowEqual } from "react-redux";
-import { search } from "../util/reducers/searchReducer";
+import { search } from "../../util/reducers/searchReducer";
 
-import Poroading from "./Poroading";
+import Poroading from "../Poroading";
 
 const SearchStyle = styled.form`
   width: 600px;

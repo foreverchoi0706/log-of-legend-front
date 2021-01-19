@@ -1,5 +1,5 @@
 import { put, delay, call, takeLatest, takeEvery } from "redux-saga/effects";
-import lolAPI from "../api/lolAPI";
+import api from "../api/api";
 
 const SEARCH = "SEARCH";
 
@@ -15,7 +15,7 @@ const searchDone = (data) => ({ type: SEARCH_DONE, data });
 
 function* handleSearch(action) {
   yield delay(1000);
-  const data = yield call(lolAPI.searchSummoner, action.keyword);
+  const data = yield call(api.searchSummoner, action.keyword);
   yield put(searchDone(data));
 }
 
@@ -24,7 +24,7 @@ export const matchList = (accountId) => ({ type: MATCH_LIST, accountId });
 const matchListSuccess = (data) => ({ type: MATCH_LIST_SUCCESS, data });
 
 function* handleMatchList(action) {
-  const data = yield call(lolAPI.matchList, action.accountId);
+  const data = yield call(api.matchList, action.accountId);
   yield put(matchListSuccess(data));
 }
 
