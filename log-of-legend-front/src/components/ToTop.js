@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
-import Poroading from "./Poroading";
+import Loading from "./Loading";
 
 const ToTopStyle = styled.div`
   position: fixed;
@@ -31,7 +31,7 @@ export default function ToTop() {
   return (
     <ToTopStyle ref={refDiv}>
       <a href="#top">
-        <Poroading />
+        <Loading />
       </a>
     </ToTopStyle>
   );

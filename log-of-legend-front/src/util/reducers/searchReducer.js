@@ -9,13 +9,13 @@ const MATCH_LIST = "MATCH_LIST";
 
 const MATCH_LIST_SUCCESS = "MATCH_LIST_SUCCESS";
 
-export const search = (keyword) => ({ type: SEARCH, keyword });
+export const search = (summonerName) => ({ type: SEARCH, summonerName });
 
 const searchDone = (data) => ({ type: SEARCH_DONE, data });
 
 function* handleSearch(action) {
   yield delay(1000);
-  const data = yield call(api.searchSummoner, action.keyword);
+  const data = yield call(api.summonerInfo, action.summonerName);
   yield put(searchDone(data));
 }
 

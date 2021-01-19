@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useSelector, useDispatch, shallowEqual } from "react-redux";
 import { search } from "../../util/reducers/searchReducer";
 
-import Poroading from "../Poroading";
+import Loading from "../Loading";
 
 const SearchStyle = styled.form`
   width: 600px;
@@ -63,10 +63,10 @@ export default function Search({ handleSearchResultClick }) {
   const dispatch = useDispatch();
 
   const handleChange = (e) => {
-    const keyword = e.target.value;
-    if (keyword) {
+    const summonerName = e.target.value;
+    if (summonerName) {
       setIsInputed(true);
-      dispatch(search(keyword));
+      dispatch(search(summonerName));
     } else {
       setIsInputed(false);
     }
@@ -81,11 +81,12 @@ export default function Search({ handleSearchResultClick }) {
       />
       {isInputed && (
         <div className="Search-inputed" onClick={() => setIsInputed("")}>
-          {isSearched || <Poroading />}
+          {isSearched || <Loading />}
           {isSearched &&
             data &&
-            data.map((summoner) => (
+            data.map((summoner, index) => (
               <div
+                key={index}
                 className="Search-result"
                 onClick={() => handleSearchResultClick(summoner)}
               >
@@ -95,8 +96,9 @@ export default function Search({ handleSearchResultClick }) {
                     summoner.profileIconId ? summoner.profileIconId : 0
                   }.png`}
                 />
-                <strong>{summoner.summonerName}</strong>
+                <strong>{summoner.summonezrName}</strong>
                 <i>{`${summoner.tier}.${summoner.rank}`}</i>
+                <stong>({summoner.queueType})</stong>
               </div>
             ))}
         </div>

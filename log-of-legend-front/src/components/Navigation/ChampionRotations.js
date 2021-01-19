@@ -1,15 +1,14 @@
 import React, { memo, useEffect } from "react";
 import styled from "styled-components";
 import { useSelector, useDispatch, shallowEqual } from "react-redux";
-import Poroading from "../Poroading";
-
 import { getChampionRaotaions } from "../../util/reducers/navigationReducer";
+
+import Loading from "../Loading";
 
 const ChampionRotationsStyle = styled.div`
   .ChampionRotations-container {
     width: 600px;
     padding: 20px 0 20px 0;
-
     display: grid;
     grid-template-columns: repeat(auto-fill, 121px);
     justify-items: center;
@@ -20,7 +19,6 @@ const ChampionRotationsStyle = styled.div`
     img {
       border-radius: 5px;
       height: 71px;
-      cursor: pointer;
     }
   }
   @media (max-width: 600px) {
@@ -46,6 +44,9 @@ function ChampionRotations() {
     dispatch(getChampionRaotaions());
   }, [dispatch, getChampionRaotaions]);
 
+  if (!isLoaded) {
+    return <Loading />;
+  }
   return (
     <ChampionRotationsStyle>
       <div className="ChampionRotations-container">

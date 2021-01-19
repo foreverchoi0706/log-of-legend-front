@@ -4,6 +4,8 @@ import styled from "styled-components";
 
 import { getPlatformData } from "../../util/reducers/navigationReducer";
 
+import Loading from "../Loading";
+
 const PlatformDataStyle = styled.div`
   width: 600px;
   color: white;
@@ -30,9 +32,13 @@ function PlatformData() {
     dispatch(getPlatformData());
   }, [dispatch, getPlatformData]);
 
+  if (!isLoaded) {
+    return <Loading />;
+  }
+
   return (
     <PlatformDataStyle>
-      {isLoaded && data && (
+      {data && (
         <div className="PlatformData-container">
           <strong>지역 : 아시아</strong>
           <strong>국가 : ko_KR</strong>

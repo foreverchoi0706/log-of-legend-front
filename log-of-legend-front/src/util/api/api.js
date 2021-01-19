@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const URL = "https://log-of-legend.herokuapp.com/";
+const URL = "https://log-of-legend.herokuapp.com";
 
 const api = {
   getChampionRotations: async () => {
@@ -18,9 +18,9 @@ const api = {
     return data;
   },
 
-  searchSummoner: async (keyword) => {
+  summonerInfo: async (summonerName) => {
     const { data } = await axios.get(
-      `${URL}/summoner-info?summonerName=${keyword}`
+      `${URL}/search/summoner-info?summonerName=${summonerName}`
     );
     return data;
   },
