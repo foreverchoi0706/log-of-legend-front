@@ -11,7 +11,6 @@ const SearchStyle = styled.form`
   input {
     background-color: var(--theme-color-bg);
     box-sizing: border-box;
-    border-radius: 5px;
     border: 1px solid var(--theme-color-border);
     color: var(--theme-color-border);
 
@@ -23,6 +22,7 @@ const SearchStyle = styled.form`
     box-sizing: border-box;
     border-radius: 0 0 5px 5px;
     border: 1px solid var(--theme-color-border);
+    border-top: none;
     color: var(--theme-color-border);
 
     width: inherit;
@@ -62,13 +62,25 @@ export default function Search({ handleSearchResultClick }) {
 
   const dispatch = useDispatch();
 
+  const setTrue = (e, summonerName) => {
+    dispatch(search(summonerName));
+    e.target.style.borderBottom = "none";
+    e.target.style.borderRadius = "5px 5px 0 0";
+    setIsInputed(true);
+  };
+
+  const setFalse = (e) => {
+    e.target.style.borderBottom = "1px solid var(--theme-color-border)";
+    e.target.style.borderRadius = "5px";
+    setIsInputed(false);
+  };
+
   const handleChange = (e) => {
     const summonerName = e.target.value;
     if (summonerName) {
-      setIsInputed(true);
-      dispatch(search(summonerName));
+      setTrue(e, summonerName);
     } else {
-      setIsInputed(false);
+      setFalse(e);
     }
   };
 
@@ -80,7 +92,7 @@ export default function Search({ handleSearchResultClick }) {
         onChange={handleChange}
       />
       {isInputed && (
-        <div className="Search-inputed" onClick={() => setIsInputed("")}>
+        <div className="Search-inputed">
           {isSearched || <Loading />}
           {isSearched &&
             data &&
@@ -96,9 +108,9 @@ export default function Search({ handleSearchResultClick }) {
                     summoner.profileIconId ? summoner.profileIconId : 0
                   }.png`}
                 />
-                <strong>{summoner.summonezrName}</strong>
+                <strong>{summoner.summonerName}</strong>
                 <i>{`${summoner.tier}.${summoner.rank}`}</i>
-                <stong>({summoner.queueType})</stong>
+                <strong>({summoner.queueType})</strong>
               </div>
             ))}
         </div>

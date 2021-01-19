@@ -1,7 +1,5 @@
 import React, { memo } from "react";
-
 import styled from "styled-components";
-
 import tierDivision from "../../util/tierDivision";
 
 const SummonerStyle = styled.div`

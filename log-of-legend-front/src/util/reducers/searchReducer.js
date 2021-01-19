@@ -9,6 +9,10 @@ const MATCH_LIST = "MATCH_LIST";
 
 const MATCH_LIST_SUCCESS = "MATCH_LIST_SUCCESS";
 
+const MATCH = "MATCH";
+
+const MATCH_SUCCESS = "MATCH_SUCCESS";
+
 export const search = (summonerName) => ({ type: SEARCH, summonerName });
 
 const searchDone = (data) => ({ type: SEARCH_DONE, data });
@@ -28,9 +32,19 @@ function* handleMatchList(action) {
   yield put(matchListSuccess(data));
 }
 
+export const match = (gameId) => ({ type: MATCH, gameId });
+
+const matchSuccess = (data) => ({ type: MATCH_SUCCESS, data });
+
+function* handleMatch(action) {
+  const data = yield call(api.match, action.gameId);
+  yield put(matchSuccess(data));
+}
+
 export function* searchSaga() {
   yield takeLatest(SEARCH, handleSearch);
   yield takeEvery(MATCH_LIST, handleMatchList);
+  yield takeEvery(MATCH, handleMatch);
 }
 
 const initialState = {
@@ -42,12 +56,17 @@ const initialState = {
     isLoaded: false,
     data: null,
   },
+  match: {
+    isLoaded: false,
+    data: null,
+  },
 };
 
 export default function searchReducer(state = initialState, action) {
   switch (action.type) {
     case SEARCH:
       return {
+        ...state,
         result: {
           isSearched: false,
           data: null,
@@ -55,13 +74,28 @@ export default function searchReducer(state = initialState, action) {
       };
     case SEARCH_DONE:
       return {
+        ...state,
         result: {
           isSearched: true,
           data: action.data,
         },
       };
     case MATCH_LIST_SUCCESS:
-      return state;
+      return {
+        ...state,
+        matchList: {
+          isLoaded: true,
+          data: action.data,
+        },
+      };
+    case MATCH_SUCCESS:
+      return {
+        ...state,
+        match: {
+          isLoaded: true,
+          data: action.data,
+        },
+      };
     default:
       return state;
   }
