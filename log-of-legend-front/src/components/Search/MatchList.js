@@ -43,4 +43,4 @@ function MatchList({ accountId }) {
   );
 }
 
-export default memo(MatchList);
+export default MatchList;

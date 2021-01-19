@@ -6,11 +6,8 @@ import MatchList from "./MatchList";
 
 const SummonerInfoStyle = styled.div`
   width: 600px;
-
   box-sizing: border-box;
-
   border-radius: 5px;
-
   @media (max-width: 600px) {
     width: calc(100vw);
   }
