@@ -1,8 +1,8 @@
 import axios from "axios";
 
-// const URL = "https://log-of-legend.herokuapp.com";
+const URL = "https://log-of-legend.herokuapp.com";
 
-const URL = "http://localhost:3000";
+// const URL = "http://localhost:3000";
 
 const api = {
   init: async () => {
