@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { getChallengerRank } from "../../util/reducers/navigationReducer";
 
-import tierDivision from "../../util/tierDivision";
+import {tierDivision} from "../../util/division";
 import Loading from "../Loading";
 
 const ChallengerRankStyle = styled.div`

@@ -5,6 +5,11 @@ import axios from "axios";
 const URL = "http://localhost:3000";
 
 const api = {
+  init: async () => {
+    const { data } = await axios.get(`${URL}`);
+    return data;
+  },
+
   getChampionRotations: async () => {
     const { data } = await axios.get(`${URL}/navigation/champion-rotations`);
     return data;

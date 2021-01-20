@@ -8,7 +8,7 @@ import Emblem_Master from "../img/emblems/Emblem_Master.png";
 import Emblem_Grandmaster from "../img/emblems/Emblem_Grandmaster.png";
 import Emblem_Challenger from "../img/emblems/Emblem_Challenger.png";
 
-const tierDivision = {
+export const tierDivision = {
   IRON: Emblem_Iron,
   BRONZE: Emblem_Bronze,
   SILVER: Emblem_Silver,
@@ -20,4 +20,18 @@ const tierDivision = {
   CHALLENGER: Emblem_Challenger,
 };
 
-export default tierDivision;
+export const laneDivision = {
+  TOP: "TOP",
+  JUNGLE: "JNG",
+  MIDDLE: "MID",
+  BOTTOM: "BOT",
+};
+
+export const championDivision = {
+  TOP: "TOP",
+  JUNGLE: "JNG",
+  MIDDLE: "MID",
+  BOTTOM: "BOT",
+};
+
+export default [];

@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 import { match } from "../../util/reducers/searchReducer";
 import Loading from "../Loading";
-import Items from "./Items";
+import Team from "./Team";
 
 const MatchStyle = styled.div`
   background-color: var(--theme-color-bg);
@@ -13,17 +13,14 @@ const MatchStyle = styled.div`
   border: 1px solid var(--theme-color-border);
   .Match-container {
     margin: 15px;
-
-    .Match-team {
+    .Match-teams {
       display: flex;
+    }
+  }
 
-      .Match-blue {
-        flex-grow: 1;
-      }
-
-      .Match-red {
-        flex-grow: 1;
-      }
+  @media (max-width: 340px) {
+    .Match-container {
+      margin: 10px;
     }
   }
 `;
@@ -59,49 +56,20 @@ function Match({ gameId }) {
   return (
     <MatchStyle>
       <div className="Match-container">
-        <div className="Match-team">
-          <div className="Match-blue">
-            {teams[0].win === "Win" ? (
-              <strong>승리</strong>
-            ) : (
-              <strong>패배</strong>
-            )}
-            <strong style={{ color: "blue" }}>BLUE TEAM</strong>
+        <div className="Match-teams">
+          <Team
+            division={"BLUE"}
+            win={teams[0].win}
+            team={participants.slice(0, 5)}
+            participantIdentities={participantIdentities}
+          />
 
-            <div className="Match-entries">
-              {participants.slice(0, 5).map((participant) => (
-                <div>
-                  <strong>
-                    {
-                      participantIdentities[participant.participantId - 1]
-                        .player.summonerName
-                    }
-                  </strong>
-                  <Items {...participant.stats} />
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="Match-red">
-            {teams[1].win === "Win" ? (
-              <strong>승리</strong>
-            ) : (
-              <strong>패배</strong>
-            )}
-            <strong style={{ color: "red" }}>RED TEAM</strong>
-            <div className="Match-entries">
-              {participants.slice(5, 10).map((participant) => (
-                <div>
-                  {
-                    participantIdentities[participant.participantId - 1].player
-                      .summonerName
-                  }
-                  <Items {...participant.stats} />
-                </div>
-              ))}
-            </div>
-          </div>
+          <Team
+            division={"RED"}
+            win={teams[1].win}
+            team={participants.slice(5, 10)}
+            participantIdentities={participantIdentities}
+          />
         </div>
       </div>
     </MatchStyle>
