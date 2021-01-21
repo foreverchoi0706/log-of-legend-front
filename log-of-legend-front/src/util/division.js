@@ -8,6 +8,11 @@ import Emblem_Master from "../img/emblems/Emblem_Master.png";
 import Emblem_Grandmaster from "../img/emblems/Emblem_Grandmaster.png";
 import Emblem_Challenger from "../img/emblems/Emblem_Challenger.png";
 
+import Position_Bronze_Bot from "../img/positions/Position_Bronze-Bot.png";
+import Position_Bronze_Jungle from "../img/positions/Position_Bronze-Jungle.png";
+import Position_Bronze_Mid from "../img/positions/Position_Bronze-Mid.png";
+import Position_Bronze_Top from "../img/positions/Position_Bronze-Top.png";
+
 export const tierDivision = {
   IRON: Emblem_Iron,
   BRONZE: Emblem_Bronze,
@@ -21,10 +26,10 @@ export const tierDivision = {
 };
 
 export const laneDivision = {
-  TOP: "TOP",
-  JUNGLE: "JNG",
-  MIDDLE: "MID",
-  BOTTOM: "BOT",
+  TOP: Position_Bronze_Top,
+  JUNGLE: Position_Bronze_Jungle,
+  MIDDLE: Position_Bronze_Mid,
+  BOTTOM: Position_Bronze_Bot,
 };
 
 export const championDivision = {

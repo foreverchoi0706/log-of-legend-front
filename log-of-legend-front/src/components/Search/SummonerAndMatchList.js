@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Summoner from "./Summoner";
 import MatchList from "./MatchList";
 
-const SummonerInfoStyle = styled.div`
+const SummonerAndMatchListStyle = styled.div`
   width: 600px;
   box-sizing: border-box;
   border-radius: 5px;
@@ -13,13 +13,13 @@ const SummonerInfoStyle = styled.div`
   }
 `;
 
-function SummonerInfo(summoner) {
+function SummonerAndMatchList(summoner) {
   return (
-    <SummonerInfoStyle>
+    <SummonerAndMatchListStyle>
       <Summoner {...summoner} />
       <MatchList {...summoner} />
-    </SummonerInfoStyle>
+    </SummonerAndMatchListStyle>
   );
 }
 
-export default memo(SummonerInfo);
+export default memo(SummonerAndMatchList);

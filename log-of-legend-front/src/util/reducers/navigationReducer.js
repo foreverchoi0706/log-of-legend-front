@@ -1,10 +1,6 @@
 import { put, call, takeEvery } from "redux-saga/effects";
 import api from "../api/api";
 
-const INIT = "INIT";
-
-const INIT_SUCCESS = "INIT_SUCCESS";
-
 const GET_CHAMPION_ROTATIONS = "GET_CHAMPION_ROTATIONS";
 
 const GET_CHAMPION_ROTATIONS_SUCCESS = "GET_CHAMPION_ROTATIONS_SUCCESS";
@@ -16,10 +12,6 @@ const GET_CHALLENGER_RANK_SUCCESS = "GET_CHALLENGER_RANK_SUCCESS";
 const GET_PLATFORM_DATA = "GET_PLATFORM_DATA";
 
 const GET_PLATFORM_DATA_SUCCESS = "GET_PLATFORM_DATA_SUCCESS";
-
-export const init = () => ({ type: INIT });
-
-const initSuccess = () => ({ type: INIT_SUCCESS });
 
 export const getChampionRaotaions = () => ({ type: GET_CHAMPION_ROTATIONS });
 
@@ -42,11 +34,6 @@ const getPlatformDataSuccess = (data) => ({
   data,
 });
 
-function* initSaga() {
-  yield call(api.init);
-  yield put(initSuccess());
-}
-
 function* getChampionRaotaionsSaga() {
   const entries = yield call(api.getChampionRotations);
   yield put(getChampionRaotaionsSuccess(entries));
@@ -63,7 +50,6 @@ function* getPlatformDataSaga() {
 }
 
 export function* navigationSaga() {
-  yield takeEvery(INIT, initSaga);
   yield takeEvery(GET_CHAMPION_ROTATIONS, getChampionRaotaionsSaga);
   yield takeEvery(GET_CHALLENGER_RANK, getChallengerRankSaga);
   yield takeEvery(GET_PLATFORM_DATA, getPlatformDataSaga);
@@ -86,8 +72,6 @@ const initialState = {
 
 const navigationReducer = (state = initialState, action) => {
   switch (action.type) {
-    case INIT_SUCCESS:
-      return state;
     case GET_CHAMPION_ROTATIONS_SUCCESS:
       return {
         ...state,

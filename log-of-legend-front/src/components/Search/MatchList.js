@@ -36,11 +36,11 @@ function MatchList({ accountId }) {
   }
   return (
     <MatchListStyle>
-      {data.matches.map((match) => (
+      {data.map((match) => (
         <Match key={match.gameId} {...match} />
       ))}
     </MatchListStyle>
   );
 }
 
-export default MatchList;
+export default memo(MatchList);

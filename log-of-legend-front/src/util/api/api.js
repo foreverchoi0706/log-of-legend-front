@@ -1,15 +1,10 @@
 import axios from "axios";
 
-const URL = "https://log-of-legend.herokuapp.com";
+let URL = "https://log-of-legend.herokuapp.com";
 
-// const URL = "http://localhost:3000";
+// URL = "http://localhost:3000";
 
 const api = {
-  init: async () => {
-    const { data } = await axios.get(`${URL}`);
-    return data;
-  },
-
   getChampionRotations: async () => {
     const { data } = await axios.get(`${URL}/navigation/champion-rotations`);
     return data;
@@ -33,7 +28,7 @@ const api = {
   },
   matchList: async (accountId) => {
     const { data } = await axios.get(
-      `${URL}/search//match-list?accountId=${accountId}`
+      `${URL}/search/match-list?accountId=${accountId}`
     );
     return data;
   },

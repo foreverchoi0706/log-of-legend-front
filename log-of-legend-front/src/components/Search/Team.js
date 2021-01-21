@@ -3,21 +3,22 @@ import styled from "styled-components";
 import Champion from "./Champion";
 import Spell from "./Spell";
 import Items from "./Items";
-import division, { championDivision, laneDivision } from "../../util/division";
+import { laneDivision } from "../../util/division";
 
 const TeamStyle = styled.div`
   flex-grow: 1;
-
   .Team-division {
     color: ${(props) => (props.division === "BLUE" ? "blue" : "red")};
-  }
-  .Team-title {
   }
   .Team-entries {
     font-size: 0.7rem;
     div {
       .Team-under {
         display: flex;
+        .Team-lane {
+          width: 20px;
+          height: 20px;
+        }
       }
     }
   }
@@ -28,7 +29,7 @@ const TeamStyle = styled.div`
   }
 `;
 
-function Team({ division, win, team, participantIdentities }) {
+function Team({ mapId, division, win, team, participantIdentities }) {
   return (
     <TeamStyle className="Team" division={division}>
       <div className="Team-title">
@@ -58,9 +59,12 @@ function Team({ division, win, team, participantIdentities }) {
               </strong>
             </div>
             <div className="Team-under">
-              <strong className="Team-lane">
-                {laneDivision[participant.timeline.lane]}
-              </strong>
+              {mapId === 11 && (
+                <img
+                  className="Team-lane"
+                  src={laneDivision[participant.timeline.lane]}
+                />
+              )}
               <Champion championId={participant.championId} />
               <Spell
                 spell1Id={participant.spell1Id}

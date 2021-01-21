@@ -4,7 +4,8 @@ import styled from "styled-components";
 
 const ChampionStyle = styled.img`
   width: 20px;
-  height : 20px;
+  height: 20px;
+  margin: 0 20px 0 0;
 `;
 
 function Champion({ championId }) {
