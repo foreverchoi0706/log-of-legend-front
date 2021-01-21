@@ -1,11 +1,15 @@
 import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
-import Loading from "./Loading";
+import poroading from "../img/poroading.png";
 
 const ToTopStyle = styled.div`
   position: fixed;
   right: -200px;
-  bottom: 0px;
+  bottom: 20px;
+
+  img{
+    width : 100px;
+  }
 `;
 
 export default function ToTop() {
@@ -20,7 +24,7 @@ export default function ToTop() {
       const style = refDiv.current.style;
       let right = -200;
       if (halfDocHeigth - (halfWindowHeight + nowPosition) <= 0) {
-        right = 0;
+        right = 20;
       }
       style.right = `${right}px`;
       style.transitionProperty = "right";
@@ -31,7 +35,7 @@ export default function ToTop() {
   return (
     <ToTopStyle ref={refDiv}>
       <a href="#top">
-        <Loading />
+        <img src={poroading} alt="poro" />
       </a>
     </ToTopStyle>
   );

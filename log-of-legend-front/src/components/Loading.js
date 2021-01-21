@@ -12,6 +12,7 @@ const LoadingStyle = styled.div`
 function Loading() {
   return (
     <LoadingStyle>
+      <strong>잠시만 기다려 주십시오...</strong>
       <FontAwesomeIcon icon={faTruckLoading} spin={true} />
     </LoadingStyle>
   );

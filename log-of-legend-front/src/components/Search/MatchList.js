@@ -29,7 +29,7 @@ function MatchList({ accountId }) {
 
   useEffect(() => {
     dispatch(matchList(accountId));
-  }, [dispatch]);
+  }, [dispatch, accountId]);
 
   if (!isLoaded) {
     return <Loading />;

@@ -66,6 +66,14 @@ export default function searchReducer(state = initialState, action) {
           data: action.data,
         },
       };
+    case MATCH_LIST:
+      return {
+        ...state,
+        matchList: {
+          isLoaded: false,
+          data: null,
+        },
+      };
     case MATCH_LIST_SUCCESS:
       return {
         ...state,
