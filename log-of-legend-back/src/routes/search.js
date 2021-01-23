@@ -23,9 +23,4 @@ search.get("/match-list", async (req, res) => {
   res.send(await api.matchList(accountId));
 });
 
-search.get("/match", async (req, res) => {
-  const { gameId } = req.query;
-  res.send(await api.match(gameId));
-});
-
 module.exports = search;
