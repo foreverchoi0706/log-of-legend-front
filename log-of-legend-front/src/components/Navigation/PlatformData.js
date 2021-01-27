@@ -16,8 +16,8 @@ const PlatformDataStyle = styled.div`
     justify-content: space-around;
   }
 
-  @media (max-width: 602px) {
-    width: calc(100vw - 2px);
+  @media (max-width: 600px) {
+    width: 100vw;
   }
 `;
 function PlatformData() {

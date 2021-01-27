@@ -26,7 +26,7 @@ const FooterStyle = styled.footer`
   }
 
   @media (max-width: 600px) {
-    width: calc(100vw);
+    width: 100vw;
   }
 `;
 

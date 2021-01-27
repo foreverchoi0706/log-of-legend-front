@@ -21,7 +21,7 @@ const BannerStyle = styled.div`
     width: inherit;
   }
   @media (max-width: 600px) {
-    width: calc(100vw);
+    width: 100vw;
   }
 `;
 

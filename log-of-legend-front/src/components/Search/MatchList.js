@@ -13,7 +13,7 @@ const MatchListStyle = styled.section`
   gap: 5px;
 
   @media (max-width: 600px) {
-    width: calc(100vw);
+    width: 100vw;
   }
   @media (max-width: 340px) {
   }
@@ -29,6 +29,14 @@ function MatchList({ accountId }) {
 
   useEffect(() => {
     dispatch(matchList(accountId));
+    window.addEventListener("scroll", () => {
+      const nowPosition = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const DocHeigth = document.body.scrollHeight;
+      if (nowPosition + windowHeight === DocHeigth) {
+        // dispatch(matchList(accountId));
+      }
+    });
   }, [dispatch, accountId]);
 
   if (!isLoaded) {
@@ -36,9 +44,9 @@ function MatchList({ accountId }) {
   }
   return (
     <MatchListStyle>
-      {data.map((match) => (
-        <Match key={match.gameId} {...match} />
-      ))}
+      {data.map((matchs) =>
+        matchs.map((match) => <Match key={match.gameId} {...match} />)
+      )}
     </MatchListStyle>
   );
 }

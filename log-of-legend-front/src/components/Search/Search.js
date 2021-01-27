@@ -41,7 +41,7 @@ const SearchStyle = styled.form`
   }
 
   @media (max-width: 600px) {
-    width: calc(100vw);
+    width: 100vw;
     input {
       font-size: 0.7rem;
     }

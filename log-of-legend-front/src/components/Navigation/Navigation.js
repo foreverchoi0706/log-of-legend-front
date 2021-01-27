@@ -39,7 +39,7 @@ const NavigationStyle = styled.nav`
   }
 
   @media (max-width: 600px) {
-    width: calc(100vw);
+    width: 100vw;
   }
   @media (max-width: 340px) {
     .Navigation-menu {

@@ -7,8 +7,18 @@ const ToTopStyle = styled.div`
   right: -200px;
   bottom: 20px;
 
-  img{
-    width : 100px;
+  img {
+    width: 100px;
+  }
+  @media (max-width: 600px) {
+    img {
+      width: 75px;
+    }
+  }
+  @media (max-width: 340px) {
+    img {
+      width: 50px;
+    }
   }
 `;
 
@@ -23,7 +33,10 @@ export default function ToTop() {
 
       const style = refDiv.current.style;
       let right = -200;
-      if (halfDocHeigth - (halfWindowHeight + nowPosition) <= 0) {
+      if (
+        halfDocHeigth > 1000 &&
+        halfDocHeigth - (halfWindowHeight + nowPosition) <= 0
+      ) {
         right = 20;
       }
       style.right = `${right}px`;

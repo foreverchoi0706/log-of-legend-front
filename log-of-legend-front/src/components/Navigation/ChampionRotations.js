@@ -23,7 +23,7 @@ const ChampionRotationsStyle = styled.div`
   }
   @media (max-width: 600px) {
     .ChampionRotations-container {
-      width: calc(100vw - 2px);
+      width: 100vw;
       grid-template-columns: repeat(auto-fill, 81px);
       img {
         height: 48px;

@@ -9,7 +9,7 @@ const SummonerAndMatchListStyle = styled.div`
   box-sizing: border-box;
   border-radius: 5px;
   @media (max-width: 600px) {
-    width: calc(100vw);
+    width: 100vw;
   }
 `;
 
