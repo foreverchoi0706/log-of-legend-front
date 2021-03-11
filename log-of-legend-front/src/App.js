@@ -22,10 +22,10 @@ const GlobalStyle = createGlobalStyle`
 
 const App = () => {
   return (
-    <div>
+    <>
       <GlobalStyle />
       <Home />
-    </div>
+    </>
   );
 };
 
