@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import riot from "../img/riot.png";
+import riot from "../images/riot.png";
 
 const FooterStyle = styled.footer`
   width: 600px;

@@ -1,10 +1,14 @@
 import axios from "axios";
 
-const instance = axios.create({
-  baseURL: "http://localhost:3000",
-});
+const OLD_URL = "https://log-of-legend.herokuapp.com";
 
-let URL = "https://log-of-legend.herokuapp.com";
+const DEV_URL = "http://localhost:3000";
+
+const DELOY_URL = "http://foreverchoi0706.com";
+
+const instance = axios.create({
+  baseURL: DELOY_URL,
+});
 
 const api = {
   getChampionRotations: async () => {

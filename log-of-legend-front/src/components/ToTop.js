@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
-import poroading from "../img/poroading.png";
+import poroading from "../images/poroading.png";
 
 const ToTopStyle = styled.div`
   position: fixed;

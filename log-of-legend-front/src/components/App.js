@@ -1,26 +1,13 @@
 import React, { useState } from "react";
-import styled from "styled-components";
-
+//components
 import Banner from "./Banner";
 import Search from "./Search/Search";
 import Footer from "./Footer";
 import Navigation from "./Navigation/Navigation";
 import ToTop from "./ToTop";
 import SummonerInfo from "./Search/SummonerAndMatchList";
-
-const HomeStyle = styled.main`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 5px;
-
-  @media (max-width: 600px) {
-    font-size: 0.7rem;
-  }
-  @media (max-width: 340px) {
-    font-size: 0.5rem;
-  }
-`;
+//styles
+import "../styles/App.scss";
 
 export default function Home() {
   const [searchResult, setSearchResult] = useState({
@@ -36,13 +23,13 @@ export default function Home() {
   };
 
   return (
-    <HomeStyle>
+    <div className="App">
       <Banner />
       <Navigation />
       <Search handleSearchResultClick={handleSearchResultClick} />
       {searchResult.isClicked && <SummonerInfo {...searchResult.summoner} />}
       <Footer />
       <ToTop />
-    </HomeStyle>
+    </div>
   );
 }
