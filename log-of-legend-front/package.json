@@ -36,7 +36,7 @@
     "build": "webpack",
     "start": "webpack serve",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d build"
   },
   "homepage": "https://foreverchoi0706.github.io/log-of-legend"
 }
