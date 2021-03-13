@@ -3,12 +3,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  h1 {
+  .Banner_logo {
     a {
-      color: gold;
+      color: --theme-color-border;
+      text-decoration: none;
     }
   }
-  img {
+  .Banner_img {
     border: 1px solid var(--theme-color-border);
     border-radius: 5px;
     box-sizing: border-box;

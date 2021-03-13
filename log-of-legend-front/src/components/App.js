@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 //components
 import Banner from "./Banner";
-import Search from "./Search/Search";
+import Search from "./Search";
 import Footer from "./Footer";
-import Navigation from "./Navigation/Navigation";
+import Nav from "./Nav";
 import ToTop from "./ToTop";
-import SummonerInfo from "./Search/SummonerAndMatchList";
+import SummonerInfo from "./search/SummonerAndMatchList";
 //styles
 import "../styles/App.scss";
 
@@ -25,7 +25,7 @@ export default function Home() {
   return (
     <div className="App">
       <Banner />
-      <Navigation />
+      <Nav />
       <Search handleSearchResultClick={handleSearchResultClick} />
       {searchResult.isClicked && <SummonerInfo {...searchResult.summoner} />}
       <Footer />

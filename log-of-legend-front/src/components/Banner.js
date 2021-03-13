@@ -7,10 +7,10 @@ import banner from "../images/banner.jpg";
 const Banner = () => {
   return (
     <div className={styles.Banner} id="top">
-      <h1>
-        <a href="/">Log of Legend</a>
+      <h1 className={styles.Banner_logo}>
+        <a href="/">LOG OF LEGEND</a>
       </h1>
-      <img src={banner} alt="banner" />
+      <img className={styles.Banner_img} src={banner} alt="banner" />
     </div>
   );
 };

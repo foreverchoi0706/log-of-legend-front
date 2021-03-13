@@ -11,7 +11,8 @@ const config = {
     filename: "index.js",
     path: path.resolve(__dirname, "build"),
   },
-  mode: "production",
+  mode: "development",
+  // mode: "production",
   module: {
     rules: [
       {

@@ -1,0 +1,28 @@
+.Footer {
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  background-color: var(--theme-color-bg);
+  box-sizing: border-box;
+  border-radius: 0 0 5px 5px;
+  border: 1px solid var(--theme-color-border);
+  color: var(--theme-color-border);
+  strong {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    img {
+      width: 40px;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .Footer {
+    width: 100vw;
+  }
+}

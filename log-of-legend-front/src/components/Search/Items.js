@@ -19,12 +19,12 @@ const ItemsStyle = styled.div`
 function Items({ item0, item1, item2, item3, item4, item5 }) {
   return (
     <ItemsStyle>
-      {item0 ? <img src={`${ITEM_URL}/${item0}.png`} /> : <img src={NULL_ITEM_URL}/>}
-      {item1 ? <img src={`${ITEM_URL}/${item1}.png`} /> : <img src={NULL_ITEM_URL}/>}
-      {item2 ? <img src={`${ITEM_URL}/${item2}.png`} /> : <img src={NULL_ITEM_URL}/>}
-      {item3 ? <img src={`${ITEM_URL}/${item3}.png`} /> : <img src={NULL_ITEM_URL}/>}
-      {item4 ? <img src={`${ITEM_URL}/${item4}.png`} /> : <img src={NULL_ITEM_URL}/>}
-      {item5 ? <img src={`${ITEM_URL}/${item5}.png`} /> : <img src={NULL_ITEM_URL}/>}
+      {item0 ? <img src={`${ITEM_URL}/${item0}.png`} alt={item0}/> : <img src={NULL_ITEM_URL} alt="null_item"/>}
+      {item1 ? <img src={`${ITEM_URL}/${item1}.png`} alt={item1}/> : <img src={NULL_ITEM_URL} alt="null_item"/>}
+      {item2 ? <img src={`${ITEM_URL}/${item2}.png`} alt={item2}/> : <img src={NULL_ITEM_URL} alt="null_item"/>}
+      {item3 ? <img src={`${ITEM_URL}/${item3}.png`} alt={item3}/> : <img src={NULL_ITEM_URL} alt="null_item"/>}
+      {item4 ? <img src={`${ITEM_URL}/${item4}.png`} alt={item4}/> : <img src={NULL_ITEM_URL} alt="null_item"/>}
+      {item5 ? <img src={`${ITEM_URL}/${item5}.png`} alt={item5}/> : <img src={NULL_ITEM_URL} alt="null_item"/>}
     </ItemsStyle>
   );
 }

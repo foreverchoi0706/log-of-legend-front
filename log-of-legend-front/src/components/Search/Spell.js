@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, memo } from "react";
 import axios from "axios";
 import styled from "styled-components";
 import { useRef } from "react";
@@ -45,4 +45,4 @@ function Spell({ spell1Id, spell2Id }) {
   );
 }
 
-export default Spell;
+export default memo(Spell);

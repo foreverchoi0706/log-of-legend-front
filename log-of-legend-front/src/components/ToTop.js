@@ -1,28 +1,11 @@
 import React, { useEffect, useRef } from "react";
-import styled from "styled-components";
+//styles
+import styles from "../styles/ToTop.module.scss";
+//images
 import poroading from "../images/poroading.png";
 
-const ToTopStyle = styled.div`
-  position: fixed;
-  right: -200px;
-  bottom: 20px;
-
-  img {
-    width: 100px;
-  }
-  @media (max-width: 600px) {
-    img {
-      width: 75px;
-    }
-  }
-  @media (max-width: 340px) {
-    img {
-      width: 50px;
-    }
-  }
-`;
-
 export default function ToTop() {
+
   const refDiv = useRef(null);
 
   useEffect(() => {
@@ -46,10 +29,10 @@ export default function ToTop() {
   }, []);
 
   return (
-    <ToTopStyle ref={refDiv}>
+    <div className={styles.ToTop} ref={refDiv}>
       <a href="#top">
         <img src={poroading} alt="poro" />
       </a>
-    </ToTopStyle>
+    </div>
   );
 }

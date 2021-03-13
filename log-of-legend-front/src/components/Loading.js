@@ -1,21 +1,15 @@
 import React, { memo } from "react";
-import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTruckLoading } from "@fortawesome/free-solid-svg-icons";
+//styles
+import styles from "../styles/Loading.module.scss";
 
-const LoadingStyle = styled.div`
-  display: flex;
-  justify-content: center;
-  padding: 20px 0 20px 0;
-`;
-
-function Loading() {
+const Loading = () => {
   return (
-    <LoadingStyle>
-      <strong>잠시만 기다려 주십시오...</strong>
+    <div className={styles.Loading}>
       <FontAwesomeIcon icon={faTruckLoading} spin={true} />
-    </LoadingStyle>
+    </div>
   );
-}
+};
 
 export default memo(Loading);
