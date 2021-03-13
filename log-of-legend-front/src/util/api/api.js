@@ -4,7 +4,7 @@ const OLD_URL = "https://log-of-legend.herokuapp.com";
 
 const DEV_URL = "http://localhost:3000";
 
-const DELOY_URL = "http://foreverchoi0706.com";
+const DELOY_URL = "https://foreverchoi0706.com";
 
 const instance = axios.create({
   baseURL: DELOY_URL,

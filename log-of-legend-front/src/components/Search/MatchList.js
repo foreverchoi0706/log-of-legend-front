@@ -44,9 +44,9 @@ function MatchList({ accountId }) {
   }
   return (
     <MatchListStyle>
-      {data.map((matchs) =>
-        matchs.map((match) => <Match key={match.gameId} {...match} />)
-      )}
+      {data.map((match) => (
+        <Match key={match.gameId} {...match} />
+      ))}
     </MatchListStyle>
   );
 }
