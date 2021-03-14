@@ -31,13 +31,13 @@
 }
 
 @media (max-width: 600px) {
-  .Navi {
+  .Nav {
     width: 100vw;
   }
 }
 @media (max-width: 340px) {
-  .Navi {
-    .Navigation-menu {
+  .Nav {
+    .Navigation_menu {
       button {
         font-size: 0.5rem;
       }
