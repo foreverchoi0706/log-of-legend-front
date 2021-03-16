@@ -4,8 +4,15 @@ import { useSelector, useDispatch, shallowEqual } from "react-redux";
 import Loading from "../Loading";
 //styles
 import styles from "../../styles/navi/ChampionRotations.module.scss";
+//images
+import attack from "../../images/info/attack.png";
+import defense from "../../images/info/defense.png";
+import difficulty from "../../images/info/difficulty.png";
+import magic from "../../images/info/magic.png";
 //reducer
 import { getChampionRaotaions } from "../../util/reducers/navigationReducer";
+//division
+import { tagDivision } from "../../util/division";
 
 function ChampionRotations() {
   const [modal, setModal] = useState({
@@ -36,18 +43,7 @@ function ChampionRotations() {
   }
   return (
     <div className={styles.ChampionRotations}>
-      <div className={styles.ChampionRotations_container}>
-        {isLoaded &&
-          data.map((champion) => (
-            <img
-              key={champion.key}
-              src={`https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champion.id}_0.jpg`}
-              alt={champion.name}
-              onClick={() => handleClick(champion)}
-            />
-          ))}
-      </div>
-      {modal.isClicked && (
+      {modal.isClicked ? (
         <div
           className={styles.ChampionRotations_champion}
           style={{
@@ -56,16 +52,49 @@ function ChampionRotations() {
           onClick={() => handleClick()}
         >
           <div>
-            <h2>{`${modal.champion.name} - ${modal.champion.title}`}</h2>
-            <div>
-            {JSON.stringify(modal.champion.info)}
-            {JSON.stringify(modal.champion.stats)}
+            <h2
+              className={styles.ChampionRotations_champion_name}
+            >{`${modal.champion.name} - ${modal.champion.title}`}</h2>
+            <div className={styles.ChampionRotations_champion_tag}>
+              {modal.champion.tags.map((tag, index) => (
+                <strong key={index}>
+                  {tagDivision[tag]}
+                  {modal.champion.tags.length - 1 !== index && ","}
+                </strong>
+              ))}
             </div>
-            <div>
-            {modal.champion.stats.armor}
+            <div className={styles.ChampionRotations_champion_info}>
+              <img src={attack} />
+              &nbsp;{modal.champion.info.attack}
+            </div>
+            <div className={styles.ChampionRotations_champion_info}>
+              <img src={defense} />
+              &nbsp;{modal.champion.info.defense}
+            </div>
+            <div className={styles.ChampionRotations_champion_info}>
+              <img src={difficulty} />
+              {modal.champion.info.difficulty}
+            </div>
+            <div className={styles.ChampionRotations_champion_info}>
+              <img src={magic} />
+              {modal.champion.info.magic}
             </div>
           </div>
-          <p>{modal.champion.blurb}</p>
+          <div className={styles.ChampionRotations_champion_blurb}>
+            {modal.champion.blurb}
+          </div>
+        </div>
+      ) : (
+        <div className={styles.ChampionRotations_list}>
+          {isLoaded &&
+            data.map((champion) => (
+              <img
+                key={champion.key}
+                src={`https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champion.id}_0.jpg`}
+                alt={champion.name}
+                onClick={() => handleClick(champion)}
+              />
+            ))}
         </div>
       )}
     </div>
