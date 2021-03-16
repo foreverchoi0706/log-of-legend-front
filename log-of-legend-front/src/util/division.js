@@ -39,4 +39,13 @@ export const championDivision = {
   BOTTOM: "BOT",
 };
 
+export const tagDivision = {
+  Tank: "탱커",
+  Mage: "마법사",
+  Assassin : "암살자",
+  Marksman : "원거리딜러",
+  Fighter : "브루저",
+  Support : "서포터"
+};
+
 export default [];
