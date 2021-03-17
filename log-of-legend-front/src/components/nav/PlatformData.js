@@ -3,7 +3,7 @@ import { shallowEqual, useDispatch, useSelector } from "react-redux";
 //coponents
 import Loading from "../Loading";
 //style
-import styles from "../../styles/navi/PlatformData.module.scss";
+import styles from "../../styles/nav/PlatformData.module.scss";
 //reducer
 import { getPlatformData } from "../../util/reducers/navigationReducer";
 

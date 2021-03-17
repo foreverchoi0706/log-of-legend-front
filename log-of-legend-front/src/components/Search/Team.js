@@ -33,7 +33,7 @@ function Team({ mapId, division, win, team, participantIdentities }) {
   return (
     <TeamStyle className="Team" division={division}>
       <div className="Team-title">
-        <strong className="Team-division">{division} TEAM</strong>
+        <strong className="Team-division">{division} TEAM</strong>&nbsp;
         {win === "Win" ? <strong>승리</strong> : <strong>패배</strong>}
       </div>
       <div className="Team-entries">

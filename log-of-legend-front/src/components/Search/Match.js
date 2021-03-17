@@ -39,13 +39,13 @@ function Match({
   participantIdentities,
 }) {
   const getGameDuration = (gameDuration) => {
-    const minites = 60;
-    return `${Math.ceil(gameDuration / minites)}분${gameDuration % minites}초`;
+    const MINITES = 60;
+    return `${Math.ceil(gameDuration / MINITES)}분${gameDuration % MINITES}초`;
   };
 
   const getGameCreation = (gameCreation) => {
-    const day = 86400000;
-    return `${Math.ceil((new Date().getTime() - gameCreation) / day)}일전`;
+    const DAY = 86400000;
+    return `${Math.ceil((new Date().getTime() - gameCreation) / DAY)}일전`;
   };
 
   return (

@@ -20,6 +20,7 @@ const MatchListStyle = styled.section`
 `;
 
 function MatchList({ accountId }) {
+  
   const { isLoaded, data } = useSelector(
     (rootReducer) => rootReducer.searchReducer.matchList,
     shallowEqual

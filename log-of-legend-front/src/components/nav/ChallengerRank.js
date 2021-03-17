@@ -3,10 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 //components
 import Loading from "../Loading";
 //styles
-import styles from "../../styles/navi/ChallengerRank.module.scss";
-//reducer
+import styles from "../../styles/nav/ChallengerRank.module.scss";
+//utills
 import { getChallengerRank } from "../../util/reducers/navigationReducer";
-//asset
 import { tierDivision } from "../../util/division";
 
 export default function ChallengerRank({ tier }) {
@@ -25,7 +24,7 @@ export default function ChallengerRank({ tier }) {
   }
   return (
     <div className={styles.ChallengerRank}>
-      {entries.slice(0, 12).map((summoner) => (
+      {entries.slice(0, 8).map((summoner) => (
         <div key={summoner.summonerId} className={styles.Summoner_container}>
           <img
             className={styles.Summoner_tier}
@@ -36,7 +35,7 @@ export default function ChallengerRank({ tier }) {
             <h4>{summoner.summonerName}</h4>
             <strong>{summoner.leaguePoints}point</strong>
             <strong>
-              {summoner.wins}wins/{summoner.losses}losses
+              {summoner.wins}승/{summoner.losses}패
             </strong>
           </div>
         </div>

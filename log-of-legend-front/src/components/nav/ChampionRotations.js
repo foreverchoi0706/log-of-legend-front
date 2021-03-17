@@ -3,7 +3,7 @@ import { useSelector, useDispatch, shallowEqual } from "react-redux";
 //components
 import Loading from "../Loading";
 //styles
-import styles from "../../styles/navi/ChampionRotations.module.scss";
+import styles from "../../styles/nav/ChampionRotations.module.scss";
 //images
 import attack from "../../images/info/attack.png";
 import defense from "../../images/info/defense.png";
