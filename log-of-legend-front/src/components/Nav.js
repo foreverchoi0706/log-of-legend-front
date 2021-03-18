@@ -6,7 +6,7 @@ import PlatformData from "./nav/PlatformData";
 //styles
 import styles from "../styles/Nav.module.scss";
 
-const Nav = () => {
+function Nav() {
   const initState = {
     championRotations: false,
     nowRanking: false,
@@ -48,5 +48,5 @@ const Nav = () => {
       </div>
     </nav>
   );
-};
+}
 export default memo(Nav);

@@ -20,5 +20,8 @@
 @media (max-width: 600px) {
   .Banner {
     width: 100vw;
+    .Banner_img {
+      border: none;
+    }
   }
 }

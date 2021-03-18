@@ -4,7 +4,7 @@ import styles from "../styles/Footer.module.scss";
 //images
 import riot from "../images/riot.png";
 
-const Footer = () => {
+function Footer() {
   return (
     <footer className={styles.Footer}>
       <strong>©CopyRight All Reserved foreverChoi</strong>
@@ -14,6 +14,6 @@ const Footer = () => {
       </strong>
     </footer>
   );
-};
+}
 
 export default Footer;

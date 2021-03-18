@@ -9,14 +9,13 @@ import ToTop from "./ToTop";
 //styles
 import "../styles/App.scss";
 
-export default function App() {
+function App() {
   const [searchResult, setSearchResult] = useState({
     isClicked: false,
     summoner: null,
   });
 
   const handleSearchResultClick = (summoner) => {
-    console.log(process.env.REACT_APP_LOGGER);
     setSearchResult({
       isClicked: true,
       summoner,
@@ -34,3 +33,5 @@ export default function App() {
     </div>
   );
 }
+
+export default App;

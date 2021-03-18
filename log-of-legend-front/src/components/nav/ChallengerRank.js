@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, memo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 //components
 import Loading from "../Loading";
@@ -8,7 +8,7 @@ import styles from "../../styles/nav/ChallengerRank.module.scss";
 import { getChallengerRank } from "../../util/reducers/navigationReducer";
 import { tierDivision } from "../../util/division";
 
-export default function ChallengerRank({ tier }) {
+function ChallengerRank({ tier }) {
   const { isLoaded, entries } = useSelector(
     (rootReducer) => rootReducer.navigationReducer.challengerRank
   );
@@ -47,3 +47,5 @@ export default function ChallengerRank({ tier }) {
 ChallengerRank.defaultProps = {
   tier: "CHALLENGER",
 };
+
+export default memo(ChallengerRank);

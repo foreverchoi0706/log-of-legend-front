@@ -50,6 +50,13 @@ const api = {
     });
     return data;
   },
+
+  getChampions: async () => {
+    const { data } = await instance.get(
+      "https://ddragon.leagueoflegends.com/cdn/11.6.1/data/en_US/champion.json"
+    );
+    return data;
+  },
 };
 
 export default api;

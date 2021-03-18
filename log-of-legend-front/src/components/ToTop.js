@@ -4,8 +4,7 @@ import styles from "../styles/ToTop.module.scss";
 //images
 import poroading from "../images/poroading.png";
 
-export default function ToTop() {
-
+function ToTop() {
   const refDiv = useRef(null);
 
   useEffect(() => {
@@ -36,3 +35,5 @@ export default function ToTop() {
     </div>
   );
 }
+
+export default ToTop;

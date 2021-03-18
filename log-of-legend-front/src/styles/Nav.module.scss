@@ -33,6 +33,15 @@
 @media (max-width: 600px) {
   .Nav {
     width: 100vw;
+    .Nav_menus {
+      button {
+        border-right: none;
+        border-left: none;
+      }
+    }
+    .Nav_show {
+      border: none;
+    }
   }
 }
 @media (max-width: 340px) {

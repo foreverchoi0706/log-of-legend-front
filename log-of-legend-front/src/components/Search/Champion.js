@@ -1,12 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,memo } from "react";
 import axios from "axios";
-import styled from "styled-components";
-
-const ChampionStyle = styled.img`
-  width: 20px;
-  height: 20px;
-  margin: 0 20px 0 0;
-`;
 
 function Champion({ championId }) {
   const [name, setName] = useState("");
@@ -15,7 +8,7 @@ function Champion({ championId }) {
     const {
       data: { data },
     } = await axios.get(
-      "https://ddragon.leagueoflegends.com/cdn/11.1.1/data/en_US/champion.json"
+      "http://ddragon.leagueoflegends.com/cdn/11.6.1/data/ko_KR/champion.json"
     );
     const temp = Object.values(data);
     if (!name) {
@@ -29,10 +22,12 @@ function Champion({ championId }) {
   });
 
   return (
-    <ChampionStyle
-      src={`https://ddragon.leagueoflegends.com/cdn/11.1.1/img/champion/${name}.png`}
+    <img
+      src={`https://ddragon.leagueoflegends.com/cdn/11.6.1/img/champion/${name}.png`}
+      alt={name}
+      style={{ width: "20px", height: "20px", marginRight: "20px" }}
     />
   );
 }
 
-export default Champion;
+export default memo(Champion);

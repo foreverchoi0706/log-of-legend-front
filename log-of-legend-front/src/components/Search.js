@@ -7,7 +7,7 @@ import styles from "../styles/Search.module.scss";
 //reducers
 import { search } from "../util/reducers/searchReducer";
 
-export default function Search({ handleSearchResultClick }) {
+function Search({ handleSearchResultClick }) {
   const { isSearched, data } = useSelector(
     (rootReducer) => rootReducer.searchReducer.result,
     shallowEqual
@@ -72,3 +72,5 @@ export default function Search({ handleSearchResultClick }) {
     </form>
   );
 }
+
+export default Search;
