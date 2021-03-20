@@ -9,7 +9,7 @@ import { search } from "../util/reducers/searchReducer";
 
 function Search({ handleSearchResultClick }) {
   const { isSearched, data } = useSelector(
-    (rootReducer) => rootReducer.searchReducer.result,
+    (rootReducer) => rootReducer.searchReducer.summoner,
     shallowEqual
   );
   const [isInputed, setIsInputed] = useState(false);

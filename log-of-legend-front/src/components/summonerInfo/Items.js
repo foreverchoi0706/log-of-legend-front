@@ -1,7 +1,7 @@
 import React, { memo } from "react";
 import styled from "styled-components";
 
-const ITEM_URL = "https://ddragon.leagueoflegends.com/cdn/11.1.1/img/item";
+const ITEM_URL = "https://ddragon.leagueoflegends.com/cdn/11.6.1/img/item";
 
 const NULL_ITEM_URL ="https://cdn3.iconfinder.com/data/icons/game-3-fill/512/close-512.png";
 

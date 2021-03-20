@@ -1,16 +1,10 @@
-import React, { useEffect, useState,memo } from "react";
-import axios from "axios";
+import React, { useEffect, useState, memo } from "react";
 
-function Champion({ championId }) {
+function Champion({ champions, championId }) {
   const [name, setName] = useState("");
 
-  useEffect(async () => {
-    const {
-      data: { data },
-    } = await axios.get(
-      "http://ddragon.leagueoflegends.com/cdn/11.6.1/data/ko_KR/champion.json"
-    );
-    const temp = Object.values(data);
+  useEffect(() => {
+    const temp = Object.values(champions.data);
     if (!name) {
       for (let i = 0; i < temp.length; i++) {
         if (parseInt(temp[i].key) === championId) {

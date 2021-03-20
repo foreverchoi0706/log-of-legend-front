@@ -57,6 +57,21 @@ const api = {
     );
     return data;
   },
+
+  getDdragon: async () => {
+    return {
+      champions: await axios
+        .get(
+          "https://ddragon.leagueoflegends.com/cdn/11.6.1/data/en_US/champion.json"
+        )
+        .then((result) => result.data),
+        spells: await axios
+        .get(
+          "https://ddragon.leagueoflegends.com/cdn/11.6.1/data/en_US/summoner.json"
+        )
+        .then((result) => result.data),
+    };
+  },
 };
 
 export default api;

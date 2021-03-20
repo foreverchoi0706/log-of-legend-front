@@ -1,21 +1,12 @@
-import React, { memo, useEffect } from "react";
-import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import React, { memo } from "react";
 //components
-import MatchList from "./MatchList";
+import MatchList from "./summonerInfo/MatchList";
 //styles
-import styles from "../../styles/search/SummonerInfo.module.scss";
+import styles from "../styles/SummonerInfo.module.scss";
 //utills
-import { tierDivision } from "../../util/division";
-import { getChampions } from "../../util/reducers/searchReducer";
+import { tierDivision } from "../util/division";
 
 function SummonerInfo(summoner) {
-  const { isLoaded, data } = useSelector(
-    (rootReducer) => rootReducer.searchReducer.champions,
-    shallowEqual
-  );
-
-  const dispatch = useDispatch();
-
   return (
     <div className={styles.SummonerInfo}>
       <div className={styles.SummonerInfo_detail}>

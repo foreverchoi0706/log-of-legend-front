@@ -1,7 +1,5 @@
 import React, { useState, useEffect, memo } from "react";
-import axios from "axios";
 import styled from "styled-components";
-import { useRef } from "react";
 
 const SpellStyle = styled.div`
   img {
@@ -9,18 +7,13 @@ const SpellStyle = styled.div`
   }
 `;
 
-function Spell({ spell1Id, spell2Id }) {
+function Spell({ spells, spell1Id, spell2Id }) {
   const [spell1Name, setSpell1Name] = useState("");
 
   const [spell2Name, setSpell2Name] = useState("");
 
   useEffect(async () => {
-    const {
-      data: { data },
-    } = await axios.get(
-      "https://ddragon.leagueoflegends.com/cdn/11.1.1/data/en_US/summoner.json"
-    );
-    const temp = Object.values(data);
+    const temp = Object.values(spells.data);
     if (!spell1Name && !spell2Name) {
       for (let i = 0; i < temp.length; i++) {
         if (parseInt(temp[i].key) === spell1Id) {
@@ -34,11 +27,11 @@ function Spell({ spell1Id, spell2Id }) {
   return (
     <SpellStyle>
       <img
-        src={`http://ddragon.leagueoflegends.com/cdn/11.1.1/img/spell/${spell1Name}.png`}
+        src={`http://ddragon.leagueoflegends.com/cdn/11.6.1/img/spell/${spell1Name}.png`}
         alt={spell1Name}
       />
       <img
-        src={`http://ddragon.leagueoflegends.com/cdn/11.1.1/img/spell/${spell2Name}.png`}
+        src={`http://ddragon.leagueoflegends.com/cdn/11.6.1/img/spell/${spell2Name}.png`}
         alt={spell2Name}
       />
     </SpellStyle>

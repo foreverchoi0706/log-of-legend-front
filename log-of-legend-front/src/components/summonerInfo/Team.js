@@ -1,72 +1,69 @@
-import React, { useEffect } from "react";
-import styled from "styled-components";
+import React from "react";
+import { shallowEqual, useSelector } from "react-redux";
+//components
 import Champion from "./Champion";
 import Spell from "./Spell";
 import Items from "./Items";
+//styles
+import styles from "../../styles/summonerInfo/Team.module.scss";
+//util
 import { laneDivision } from "../../util/division";
 
-const TeamStyle = styled.div`
-  flex-grow: 1;
-  .Team-division {
-    color: ${(props) => (props.division === "BLUE" ? "blue" : "red")};
-  }
-  .Team-entries {
-    font-size: 0.7rem;
-    div {
-      .Team-under {
-        display: flex;
-        .Team-lane {
-          width: 20px;
-          height: 20px;
-        }
-      }
-    }
-  }
-  @media (max-width: 340px) {
-    .Team-entries {
-      font-size: 0.5rem;
-    }
-  }
-`;
-
 function Team({ mapId, division, win, team, participantIdentities }) {
+  const { isLoaded, data } = useSelector(
+    (rootReducer) => rootReducer.ddragonReducer.ddragon,
+    shallowEqual
+  );
+
   return (
-    <TeamStyle className="Team" division={division}>
-      <div className="Team-title">
-        <strong className="Team-division">{division} TEAM</strong>&nbsp;
+    <div className={styles.Team}>
+      <div>
+        <strong
+          className="Team_title"
+          style={{
+            color: division === "BLUE" ? "blue" : "red",
+          }}
+        >
+          {division} TEAM
+        </strong>
+        &nbsp;
         {win === "Win" ? <strong>승리</strong> : <strong>패배</strong>}
       </div>
-      <div className="Team-entries">
+      <div className={styles.Team_entries}>
         {team.map((participant) => (
           <div key={participant.participantId}>
             <div>
-              <strong className="Team-summonerName">
+              <strong className="Team_summonerName">
                 {
                   participantIdentities[participant.participantId - 1].player
                     .summonerName
                 }
               </strong>
-              <strong className="Team-kda">
+              <strong className="Team_kda">
                 (
                 {`${participant.stats.kills}/${participant.stats.deaths}/${participant.stats.assists}`}
                 )
               </strong>
-              <strong className="Team-kda-avg">
+              <strong className="Team_kda_avg">
                 {`KDA ${(
                   (participant.stats.kills + participant.stats.assists) /
                   participant.stats.deaths
                 ).toFixed(1)}`}
               </strong>
             </div>
-            <div className="Team-under">
+            <div className={styles.Team_under}>
               {mapId === 11 && (
                 <img
-                  className="Team-lane"
+                  className={styles.Team_lane}
                   src={laneDivision[participant.timeline.lane]}
                 />
               )}
-              <Champion championId={participant.championId} />
+              <Champion
+                champions={data.champions}
+                championId={participant.championId}
+              />
               <Spell
+                spells={data.spells}
                 spell1Id={participant.spell1Id}
                 spell2Id={participant.spell2Id}
               />
@@ -75,7 +72,7 @@ function Team({ mapId, division, win, team, participantIdentities }) {
           </div>
         ))}
       </div>
-    </TeamStyle>
+    </div>
   );
 }
 

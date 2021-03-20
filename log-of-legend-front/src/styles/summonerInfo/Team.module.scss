@@ -1,0 +1,23 @@
+.Team {
+  flex-grow: 1;
+  .Team_entries {
+    font-size: 0.7rem;
+    div {
+      .Team_under {
+        display: flex;
+        .Team_lane {
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 340px) {
+  .Team {
+    .Team_entries {
+      font-size: 0.5rem;
+    }
+  }
+}
