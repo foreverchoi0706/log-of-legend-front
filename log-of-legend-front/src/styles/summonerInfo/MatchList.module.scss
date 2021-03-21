@@ -26,6 +26,9 @@
 @media (max-width: 600px) {
   .MatchList {
     width: 100vw;
+    .Match {
+      border: none;
+    }
   }
 }
 @media (max-width: 340px) {

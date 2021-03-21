@@ -1,18 +1,17 @@
 .Search {
   width: 600px;
+  border: 1px solid var(--theme-color-border);
+  background-color: var(--theme-color-bg);
+  border-radius: 5px 5px 5px 5px;
   input {
-    background-color: var(--theme-color-bg);
     box-sizing: border-box;
-    border: 1px solid var(--theme-color-border);
+    background-color: var(--theme-color-bg);
     color: var(--theme-color-border);
     width: inherit;
     height: 50px;
   }
   .Search_inputed {
-    background-color: var(--theme-color-bg);
     box-sizing: border-box;
-    border-radius: 0 0 5px 5px;
-    border: 1px solid var(--theme-color-border);
     border-top: none;
     color: var(--theme-color-border);
     width: inherit;
@@ -24,6 +23,19 @@
       gap: 10px;
       .Search_profile {
         width: 50px;
+      }
+    }
+  }
+  .Search_history {
+    display: flex;
+    span {
+      width: 16%;
+      padding: 5px 10px 5px 10px;
+      border: 1px solid var(--theme-color-border);
+      text-align: center;
+      cursor: pointer;
+      &:hover {
+        text-decoration: underline;
       }
     }
   }
@@ -39,12 +51,22 @@
     .Search_inputed {
       border: none;
     }
+    .Search_history {
+      span {
+        font-size: 0.7rem;
+      }
+    }
   }
 }
 @media (max-width: 340px) {
   .Search {
     input {
       font-size: 0.5rem;
+    }
+    .Search_history {
+      span {
+        font-size: 0.5rem;
+      }
     }
   }
 }
