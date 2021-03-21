@@ -10,7 +10,7 @@ import styles from "../../styles/summonerInfo/Team.module.scss";
 import { laneDivision } from "../../util/division";
 
 function Team({ mapId, division, win, team, participantIdentities }) {
-  const { isLoaded, data } = useSelector(
+  const { data } = useSelector(
     (rootReducer) => rootReducer.ddragonReducer.ddragon,
     shallowEqual
   );
