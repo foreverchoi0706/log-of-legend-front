@@ -16,25 +16,12 @@ function Search({ handleSearchResultClick }) {
 
   const dispatch = useDispatch();
 
-  const setTrue = (e, summonerName) => {
-    dispatch(search(summonerName));
-    e.target.style.borderBottom = "none";
-    e.target.style.borderRadius = "5px 5px 0 0";
-    setIsInputed(true);
-  };
-
-  const setFalse = (e) => {
-    e.target.style.borderBottom = "1px solid var(--theme-color-border)";
-    e.target.style.borderRadius = "5px";
-    setIsInputed(false);
-  };
-
-  const handleChange = (e) => {
-    const summonerName = e.target.value;
+  const handleChange = (summonerName) => {
     if (summonerName) {
-      setTrue(e, summonerName);
+      dispatch(search(summonerName));
+      setIsInputed(true);
     } else {
-      setFalse(e);
+      setIsInputed(false);
     }
   };
 
@@ -43,8 +30,16 @@ function Search({ handleSearchResultClick }) {
       <input
         type="text"
         placeholder=" 소환사명을 입력해 주세요"
-        onChange={handleChange}
+        onChange={(e) => handleChange(e.target.value)}
       />
+      <section className={styles.Search_history}>
+        {sessionStorage.getItem("history") &&
+          JSON.parse(sessionStorage.getItem("history")).map((summonerName) => (
+            <span onClick={(e) => handleChange(e.target.innerHTML)}>
+              {summonerName}
+            </span>
+          ))}
+      </section>
       {isInputed && (
         <div className={styles.Search_inputed}>
           {isSearched || <Loading />}
