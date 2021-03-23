@@ -12,6 +12,6 @@ app.use(cors());
 app.use("/navigation", navigation);
 app.use("/search", search);
 
-app.get("/", (_, res) => res.send("hellow heroku!"));
+app.get("/", (_, res) => res.send("log_of_legend backend server"));
 
 app.listen(PORT, () => console.log(`server is running on ${PORT}`));

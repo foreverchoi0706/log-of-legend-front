@@ -7,7 +7,7 @@ const DEV_URL = "http://localhost:3000";
 const DELOY_URL = "https://foreverchoi0706.com";
 
 const instance = axios.create({
-  baseURL: DEV_URL,
+  baseURL: DELOY_URL,
 });
 
 const api = {
