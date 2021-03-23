@@ -2,16 +2,6 @@ const axios = require("axios");
 
 const API_KEY = "RGAPI-4d0083e2-daec-49ba-8e63-b3eec2ed4be0";
 
-const riotgames = axios.create({
-  baseURL: "https://kr.api.riotgames.com/lol/",
-  headers: { "X-Riot-Token": API_KEY },
-});
-
-const ddragon =  axios.create({
-  baseURL: "https://some-domain.com/api/",
-  headers: { "X-Riot-Token": API_KEY },
-});
-
 const config = {
   headers: {
     "X-Riot-Token": API_KEY,
@@ -92,11 +82,30 @@ const api = {
     return data;
   },
 
-  async matchList(accountId, startIndex, endIndex) {
+  async matchList(accountId) {
     const {
       data: { matches },
     } = await axios.get(
       `https://kr.api.riotgames.com/lol/match/v4/matchlists/by-account/${accountId}?endIndex=5&beginIndex=0`,
+      config
+    );
+    const matchList = [];
+
+    for (let i = 0; i < matches.length; i++) {
+      const { data } = await axios.get(
+        `https://kr.api.riotgames.com/lol/match/v4/matches/${matches[i].gameId}`,
+        config
+      );
+      matchList.push(data);
+    }
+    return matchList;
+  },
+
+  async nextMatchList(accountId, beginIndex, endIndex) {
+    const {
+      data: { matches },
+    } = await axios.get(
+      `https://kr.api.riotgames.com/lol/match/v4/matchlists/by-account/${accountId}?endIndex=${endIndex}&beginIndex=${beginIndex}`,
       config
     );
     const matchList = [];

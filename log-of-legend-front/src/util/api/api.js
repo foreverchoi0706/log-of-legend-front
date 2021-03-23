@@ -7,7 +7,7 @@ const DEV_URL = "http://localhost:3000";
 const DELOY_URL = "https://foreverchoi0706.com";
 
 const instance = axios.create({
-  baseURL: DELOY_URL,
+  baseURL: DEV_URL,
 });
 
 const api = {
@@ -51,6 +51,17 @@ const api = {
     return data;
   },
 
+  nextMatchList: async (accountId, beginIndex, endIndex) => {
+    const { data } = await instance.get("/search/next-match-list", {
+      params: {
+        accountId,
+        beginIndex,
+        endIndex,
+      },
+    });
+    return data;
+  },
+
   getChampions: async () => {
     const { data } = await instance.get(
       "https://ddragon.leagueoflegends.com/cdn/11.6.1/data/en_US/champion.json"
@@ -65,7 +76,7 @@ const api = {
           "https://ddragon.leagueoflegends.com/cdn/11.6.1/data/en_US/champion.json"
         )
         .then((result) => result.data),
-        spells: await axios
+      spells: await axios
         .get(
           "https://ddragon.leagueoflegends.com/cdn/11.6.1/data/en_US/summoner.json"
         )

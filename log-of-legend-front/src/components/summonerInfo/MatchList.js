@@ -1,4 +1,4 @@
-import React, { memo, useEffect } from "react";
+import React, { memo, useEffect, useState } from "react";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 //components
 import Loading from "../Loading";
@@ -6,10 +6,13 @@ import Team from "./Team";
 //styles
 import styles from "../../styles/summonerInfo/MatchList.module.scss";
 //util
-import { matchList } from "../../util/reducers/searchReducer";
+import { matchList, nextMatchList } from "../../util/reducers/searchReducer";
 
 const DAY = 86400000;
 const MINITES = 60;
+
+let beginIndex = 5;
+let endIndex = 10;
 
 function Match({
   mapId,
@@ -68,6 +71,11 @@ function MatchList({ accountId }) {
     shallowEqual
   );
 
+  const nextLoaded = useSelector(
+    (rootReducer) => rootReducer.searchReducer.nextLoaded,
+    shallowEqual
+  );
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -77,8 +85,9 @@ function MatchList({ accountId }) {
       const windowHeight = window.innerHeight;
       const DocHeigth = document.body.scrollHeight;
       if (nowPosition + windowHeight === DocHeigth) {
-        alert(123);
-        // dispatch(matchList(accountId));
+        beginIndex += 5;
+        endIndex += 5;
+        dispatch(nextMatchList(accountId, beginIndex, endIndex));
       }
     });
   }, [dispatch, accountId]);
@@ -91,6 +100,7 @@ function MatchList({ accountId }) {
       {data.map((match) => (
         <Match key={match.gameId} {...match} />
       ))}
+      {nextLoaded || <Loading />}
     </section>
   );
 }

@@ -24,6 +24,10 @@ const GET_MATCH_LIST = "GET_MATCH_LIST";
 
 const GET_MATCH_LIST_SUCCESS = "GET_MATCH_LIST_SUCCESS";
 
+const GET_NEXT_MATCH_LIST = "GET_NEXT_MATCH_LIST";
+
+const GET_NEXT_MATCH_LIST_SUCCESS = "GET_NEXT_MATCH_LIST_SUCCESS";
+
 export const search = (summonerName) => ({
   type: SEARCH_SUMMONER,
   summonerName,
@@ -47,9 +51,32 @@ function* matchListSaga(action) {
   yield put(matchListSuccess(data));
 }
 
+export const nextMatchList = (accountId, beginIndex, endIndex) => ({
+  type: GET_NEXT_MATCH_LIST,
+  accountId,
+  beginIndex,
+  endIndex,
+});
+
+const nextMatchListSuccess = (data) => ({
+  type: GET_NEXT_MATCH_LIST_SUCCESS,
+  data,
+});
+
+function* nextMatchListSaga(action) {
+  const data = yield call(
+    api.nextMatchList,
+    action.accountId,
+    action.beginIndex,
+    action.endIndex
+  );
+  yield put(nextMatchListSuccess(data));
+}
+
 export function* searchSaga() {
   yield takeLatest(SEARCH_SUMMONER, searchSummonerSaga);
   yield takeEvery(GET_MATCH_LIST, matchListSaga);
+  yield takeEvery(GET_NEXT_MATCH_LIST, nextMatchListSaga);
 }
 
 const initialState = {
@@ -61,6 +88,7 @@ const initialState = {
     isLoaded: false,
     data: null,
   },
+  nextLoaded: false,
   match: {
     isLoaded: false,
     data: null,
@@ -105,7 +133,20 @@ export default function searchReducer(state = initialState, action) {
           data: action.data,
         },
       };
-
+    case GET_NEXT_MATCH_LIST:
+      return {
+        ...state,
+        nextLoaded: false,
+      };
+    case GET_NEXT_MATCH_LIST_SUCCESS:
+      return {
+        ...state,
+        matchList: {
+          ...state.matchList,
+          data: state.matchList.data.concat(action.data),
+        },
+        nextLoaded: true,
+      };
     default:
       return state;
   }
