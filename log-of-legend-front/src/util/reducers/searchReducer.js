@@ -2,16 +2,16 @@ import { put, delay, call, takeLatest, takeEvery } from "redux-saga/effects";
 import api from "../api/api";
 
 const setStorage = (summonerName) => {
-  if (sessionStorage.getItem("history") === null) {
-    sessionStorage.setItem("history", JSON.stringify([summonerName]));
+  if (localStorage.getItem("history") === null) {
+    localStorage.setItem("history", JSON.stringify([summonerName]));
   } else {
-    const history = JSON.parse(sessionStorage.getItem("history"));
+    const history = JSON.parse(localStorage.getItem("history"));
     if (!history.includes(summonerName)) {
       if (history.length === 6) {
         history.pop();
       }
       history.unshift(summonerName);
-      sessionStorage.setItem("history", JSON.stringify(history));
+      localStorage.setItem("history", JSON.stringify(history));
     }
   }
 };

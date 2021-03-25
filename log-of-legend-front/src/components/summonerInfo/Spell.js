@@ -31,6 +31,7 @@ function Spell({ spells, spell1Id, spell2Id }) {
         alt={spell2Name}
         style={{
           width: "20px",
+          marginRight: "20px"
         }}
       />
     </div>

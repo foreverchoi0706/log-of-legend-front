@@ -19,7 +19,7 @@ function Champion({ champions, championId }) {
     <img
       src={`https://ddragon.leagueoflegends.com/cdn/11.6.1/img/champion/${name}.png`}
       alt={name}
-      style={{ width: "20px", height: "20px", marginRight: "20px" }}
+      style={{ width: "20px", height: "20px" }}
     />
   );
 }

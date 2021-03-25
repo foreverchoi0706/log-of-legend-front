@@ -84,10 +84,15 @@ function MatchList({ accountId }) {
       const nowPosition = window.scrollY;
       const windowHeight = window.innerHeight;
       const DocHeigth = document.body.scrollHeight;
+
       if (nowPosition + windowHeight === DocHeigth) {
-        beginIndex += 5;
-        endIndex += 5;
-        dispatch(nextMatchList(accountId, beginIndex, endIndex));
+        if (endIndex === 100) {
+          alert("마지막입니다.");
+        } else {
+          beginIndex += 5;
+          endIndex += 5;
+          dispatch(nextMatchList(accountId, beginIndex, endIndex));
+        }
       }
     });
   }, [dispatch, accountId]);

@@ -12,6 +12,7 @@ import Position_Bronze_Bot from "../images/positions/Position_Bronze-Bot.png";
 import Position_Bronze_Jungle from "../images/positions/Position_Bronze-Jungle.png";
 import Position_Bronze_Mid from "../images/positions/Position_Bronze-Mid.png";
 import Position_Bronze_Top from "../images/positions/Position_Bronze-Top.png";
+import Position_Bronze_Support from "../images/positions/Position_Bronze_Support.png";
 
 export const tierDivision = {
   IRON: Emblem_Iron,
@@ -30,6 +31,7 @@ export const laneDivision = {
   JUNGLE: Position_Bronze_Jungle,
   MIDDLE: Position_Bronze_Mid,
   BOTTOM: Position_Bronze_Bot,
+  NONE : Position_Bronze_Support,
 };
 
 export const championDivision = {

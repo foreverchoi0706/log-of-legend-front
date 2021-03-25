@@ -56,6 +56,7 @@ function Team({ mapId, division, win, team, participantIdentities }) {
                 <img
                   className={styles.Team_lane}
                   src={laneDivision[participant.timeline.lane]}
+                  alt={participant.timeline.lane}
                 />
               )}
               <Champion

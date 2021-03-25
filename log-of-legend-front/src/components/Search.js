@@ -33,8 +33,8 @@ function Search({ handleSearchResultClick }) {
         onChange={(e) => handleChange(e.target.value)}
       />
       <section className={styles.Search_history}>
-        {sessionStorage.getItem("history") &&
-          JSON.parse(sessionStorage.getItem("history")).map((summonerName) => (
+        {localStorage.getItem("history") &&
+          JSON.parse(localStorage.getItem("history")).map((summonerName) => (
             <span onClick={(e) => handleChange(e.target.innerHTML)}>
               {summonerName}
             </span>
