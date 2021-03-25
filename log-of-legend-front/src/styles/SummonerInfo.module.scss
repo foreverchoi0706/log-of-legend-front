@@ -9,7 +9,9 @@
     border: 1px solid var(--theme-color-border);
     border-radius: 5px;
     .Summoner_detail_tier {
+      padding: 25px;
       width: 150px;
+      height: 150px;
     }
     .Summoner_detail_blurb {
       display: flex;
