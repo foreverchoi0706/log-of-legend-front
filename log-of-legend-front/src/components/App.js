@@ -12,6 +12,21 @@ import "../styles/App.scss";
 //util
 import { getDdragon } from "../util/reducers/ddragonReducer";
 
+const setStorage = (summonerName) => {
+  if (localStorage.getItem("history") === null) {
+    localStorage.setItem("history", JSON.stringify([summonerName]));
+  } else {
+    const history = JSON.parse(localStorage.getItem("history"));
+    if (!history.includes(summonerName)) {
+      if (history.length === 6) {
+        history.pop();
+      }
+      history.unshift(summonerName);
+      localStorage.setItem("history", JSON.stringify(history));
+    }
+  }
+};
+
 function App() {
   const [searchResult, setSearchResult] = useState({
     isClicked: false,
@@ -25,6 +40,7 @@ function App() {
   }, [getDdragon]);
 
   const handleSearchResultClick = (summoner) => {
+    setStorage(summoner.summonerName);
     setSearchResult({
       isClicked: true,
       summoner,

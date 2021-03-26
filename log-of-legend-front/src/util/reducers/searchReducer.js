@@ -1,21 +1,6 @@
 import { put, delay, call, takeLatest, takeEvery } from "redux-saga/effects";
 import api from "../api/api";
 
-const setStorage = (summonerName) => {
-  if (localStorage.getItem("history") === null) {
-    localStorage.setItem("history", JSON.stringify([summonerName]));
-  } else {
-    const history = JSON.parse(localStorage.getItem("history"));
-    if (!history.includes(summonerName)) {
-      if (history.length === 6) {
-        history.pop();
-      }
-      history.unshift(summonerName);
-      localStorage.setItem("history", JSON.stringify(history));
-    }
-  }
-};
-
 const SEARCH_SUMMONER = "SEARCH_SUMMONER";
 
 const SEARCH_SUMMONER_DONE = "SEARCH_SUMMONER_DONE";
@@ -38,7 +23,6 @@ const searchDone = (data) => ({ type: SEARCH_SUMMONER_DONE, data });
 function* searchSummonerSaga(action) {
   yield delay(1000);
   const data = yield call(api.summonerInfo, action.summonerName);
-  setStorage(action.summonerName);
   yield put(searchDone(data));
 }
 
