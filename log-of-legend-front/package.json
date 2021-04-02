@@ -37,5 +37,8 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "homepage": "https://foreverchoi0706.github.io/log-of-legend"
+  "homepage": "https://foreverchoi0706.github.io/log-of-legend",
+  "devDependencies": {
+    "dotenv": "^8.2.0"
+  }
 }

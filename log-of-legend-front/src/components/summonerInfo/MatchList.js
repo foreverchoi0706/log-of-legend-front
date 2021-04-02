@@ -87,7 +87,7 @@ function MatchList({ accountId }) {
 
       if (nowPosition + windowHeight === DocHeigth) {
         if (endIndex === 100) {
-          alert("마지막입니다.");
+          alert("더 이상 가져올 수 없습니다.");
         } else {
           beginIndex += 5;
           endIndex += 5;

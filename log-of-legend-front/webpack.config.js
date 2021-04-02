@@ -2,6 +2,9 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const webpack = require("webpack");
+const dotenv = require("dotenv");
+
+dotenv.config();
 
 const config = {
   entry: {
@@ -40,10 +43,8 @@ const config = {
       favicon: "public/favicon.ico",
     }),
     new CleanWebpackPlugin(),
-    new webpack.DefinePlugin({
-      "process.env.NODE_ENV": JSON.stringify("development"),
-      "process.env.NODE_ENV": JSON.stringify("production"),
-    }),
+    new webpack.DefinePlugin({}),
+    new webpack.EnvironmentPlugin(["DEBUG"]),
   ],
   devServer: {
     hot: true,

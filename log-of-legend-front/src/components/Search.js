@@ -34,8 +34,8 @@ function Search({ handleSearchResultClick }) {
       />
       <section className={styles.Search_history}>
         {localStorage.getItem("history") &&
-          JSON.parse(localStorage.getItem("history")).map((summonerName) => (
-            <span onClick={(e) => handleChange(e.target.innerHTML)}>
+          JSON.parse(localStorage.getItem("history")).map((summonerName,index) => (
+            <span key={index} onClick={(e) => handleChange(e.target.innerHTML)}>
               {summonerName}
             </span>
           ))}
