@@ -20,14 +20,14 @@ function Spell({ spells, spell1Id, spell2Id }) {
   return (
     <div>
       <img
-        src={`http://ddragon.leagueoflegends.com/cdn/11.6.1/img/spell/${spell1Name}.png`}
+        src={`https://ddragon.leagueoflegends.com/cdn/11.6.1/img/spell/${spell1Name}.png`}
         alt={spell1Name}
         style={{
           width: "20px",
         }}
       />
       <img
-        src={`http://ddragon.leagueoflegends.com/cdn/11.6.1/img/spell/${spell2Name}.png`}
+        src={`https://ddragon.leagueoflegends.com/cdn/11.6.1/img/spell/${spell2Name}.png`}
         alt={spell2Name}
         style={{
           width: "20px",

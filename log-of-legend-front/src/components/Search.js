@@ -53,7 +53,7 @@ function Search({ handleSearchResultClick }) {
               >
                 <img
                   className={styles.Search_profile}
-                  src={`http://ddragon.leagueoflegends.com/cdn/11.1.1/img/profileicon/${
+                  src={`https://ddragon.leagueoflegends.com/cdn/11.1.1/img/profileicon/${
                     summoner.profileIconId ? summoner.profileIconId : 0
                   }.png`}
                 />
