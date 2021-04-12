@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const OLD_URL = "https://log-of-legend.herokuapp.com";
+const OLD_URL = "https://log-of_legend.herokuapp.com";
 
 const DEV_URL = "http://localhost:3000";
 

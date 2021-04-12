@@ -1,5 +1,5 @@
 {
-  "name": "log-of-legend-front",
+  "name": "log_of_legend_front",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -37,7 +37,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "homepage": "https://foreverchoi0706.github.io/log-of-legend",
+  "homepage": "https://foreverchoi0706.github.io/log_of_legend",
   "devDependencies": {
     "dotenv": "^8.2.0"
   }
