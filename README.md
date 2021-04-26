@@ -1,7 +1,7 @@
 # LOG OF LEGEND
    ![view](https://user-images.githubusercontent.com/57241273/111068881-e4862e00-850d-11eb-9dc1-b820ce9117b4.PNG)
 ## 바로가기
-   [클릭](https://foreverchoi0706.github.io/log_of_legend/)
+   [클릭](http://lol.foreverchoi0706.com/)
 
 ## 개요
     평소 즐거하는 게임의 전적 사이트를 평소에 자주 이용하는데,
