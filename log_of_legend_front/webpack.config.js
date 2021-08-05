@@ -54,7 +54,7 @@ const config = {
     },
     contentBase: path.join(__dirname, "public/"),
     host: "localhost",
-    port: "8080",
+    port: "3001",
     open: true,
   },
 };
