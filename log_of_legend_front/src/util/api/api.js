@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const DELOY_URL = "http://log-api.foreverchoi0706.com";
+const DELOY_URL = "https://lol-api.foreverchoi0706.com";
 
 const instance = axios.create({
   baseURL: DELOY_URL,
