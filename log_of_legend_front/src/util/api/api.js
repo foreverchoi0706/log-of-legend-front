@@ -1,10 +1,6 @@
 import axios from "axios";
 
-const OLD_URL = "https://log-of_legend.herokuapp.com";
-
-const DEV_URL = "http://localhost:3000";
-
-const DELOY_URL = "http://log_of_legend_back.foreverchoi0706.com";
+const DELOY_URL = "http://log-api.foreverchoi0706.com";
 
 const instance = axios.create({
   baseURL: DELOY_URL,

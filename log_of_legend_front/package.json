@@ -35,12 +35,9 @@
   "scripts": {
     "build": "webpack",
     "start": "webpack serve",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "preproduce": "npm run build",
-    "produce": "serve -s build -l 3000"
+    "produce": "serve -s build -l 3001"
   },
-  "homepage": "https://foreverchoi0706.github.io/log_of_legend",
   "devDependencies": {
     "dotenv": "^8.2.0"
   }
