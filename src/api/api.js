@@ -10,14 +10,24 @@ const instance = axios.create({
 });
 
 const api = {
+  async version() {
+    const {
+      data
+    } = await instance.get("https://ddragon.leagueoflegends.com/api/versions.json");
+    return data[0];
+  },
+
   async championRotations() {
+
+    const version = await instance.get("https://ddragon.leagueoflegends.com/api/versions.json");
+
     const {
       data: { freeChampionIds },
     } = await instance.get("/platform/v3/champion-rotations");
     const {
       data: { data },
     } = await instance.get(
-      "http://ddragon.leagueoflegends.com/cdn/10.25.1/data/ko_KR/champion.json"
+      `http://ddragon.leagueoflegends.com/cdn/${version.data[0]}/data/ko_KR/champion.json`
     );
 
     const championKeys = Object.keys(data);
@@ -76,6 +86,7 @@ const api = {
   },
 
   async matchList(accountId) {
+    console.log(accountId);
     const {
       data: { matches },
     } = await instance.get(

@@ -3,9 +3,12 @@ const cors = require("cors");
 const api = require("../api/api");
 
 const navigation = express.Router();
-navigation.use(cors());
 
 navigation.get("/", (_, res) => res.send("navigation"));
+
+navigation.get("/version", async (_, res) => {
+  res.send(await api.version());
+})
 
 navigation.get("/champion-rotations", async (_, res) => {
   res.send(await api.championRotations());

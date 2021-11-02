@@ -4,13 +4,6 @@ const api = require("../api/api");
 // const { default: axios } = require("axios");
 
 const search = express.Router();
-search.use(cors());
-
-//헤로쿠 배포시 속도향상을 위한 정기적 요청
-// setInterval(async () => {
-//   await axios.get("https://log-of-legend.herokuapp.com");
-//   console.log("heroku is running...");
-// }, 600000);
 
 search.get("/", (_, res) => res.send("search"));
 
