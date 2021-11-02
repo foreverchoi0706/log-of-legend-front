@@ -19,6 +19,9 @@ search.get("/match-list", async (req, res) => {
 
 search.get("/next-match-list", async (req, res) => {
   const { puuid, beginIndex, endIndex } = req.query;
+  if(endIndex == 100){
+    res.end();
+  }
   res.send(await api.nextMatchList(puuid, beginIndex, endIndex));
 });
 
