@@ -13,13 +13,13 @@ search.get("/summoner-info", async (req, res) => {
 });
 
 search.get("/match-list", async (req, res) => {
-  const { accountId } = req.query;
-  res.send(await api.matchList(accountId));
+  const { puuid } = req.query;
+  res.send(await api.matchList(puuid));
 });
 
 search.get("/next-match-list", async (req, res) => {
-  const { accountId, beginIndex, endIndex } = req.query;
-  res.send(await api.nextMatchList(accountId, beginIndex, endIndex));
+  const { puuid, beginIndex, endIndex } = req.query;
+  res.send(await api.nextMatchList(puuid, beginIndex, endIndex));
 });
 
 module.exports = search;

@@ -6,6 +6,17 @@ const instance = axios.create({
   baseURL: "https://kr.api.riotgames.com/lol/",
   headers: {
     "X-Riot-Token": API_KEY,
+    "Accept-Charset": "application/x-www-form-urlencoded; charset=UTF-8",
+    "Origin": "https://developer.riotgames.com",
+  },
+});
+
+const instance2 = axios.create({
+  baseURL: "https://asia.api.riotgames.com/lol/",
+  headers: {
+    "X-Riot-Token": API_KEY,
+    "Accept-Charset": "application/x-www-form-urlencoded; charset=UTF-8",
+    "Origin": "https://developer.riotgames.com",
   },
 });
 
@@ -68,16 +79,15 @@ const api = {
 
   async summonerInfo(summonerName) {
     const {
-      data: { id, profileIconId, accountId, summonerLevel },
+      data: { puuid, id, profileIconId, accountId, summonerLevel },
     } = await instance
       .get(`/summoner/v4/summoners/by-name/${summonerName}`)
       .catch((error) => {
         console.error(error);
       });
-
     const { data } = await instance.get(`/league/v4/entries/by-summoner/${id}`);
-
     data.forEach((info) => {
+      info.puuid = puuid;
       info.accountId = accountId;
       info.summonerLevel = summonerLevel;
       info.profileIconId = profileIconId;
@@ -85,40 +95,31 @@ const api = {
     return data;
   },
 
-  async matchList(accountId) {
-    console.log(accountId);
-    const {
-      data: { matches },
-    } = await instance.get(
-      `/match/v4/matchlists/by-account/${accountId}?endIndex=5&beginIndex=0`
+  async matchList(puuid) {
+    console.log("accountId:::", puuid);
+    const matches = await instance2.get(
+      `/match/v5/matches/by-puuid/${puuid}/ids?start=0&count=5`,
     );
     const matchList = [];
-
-    for (let i = 0; i < matches.length; i++) {
-      const { data } = await instance.get(
-        `/match/v4/matches/${matches[i].gameId}`
+    for (let i = 0; i < matches.data.length; i++) {
+      const { data } = await instance2.get(
+        `/match/v5/matches/${matches.data[i]}`
       );
-      matchList.push(data);
+      matchList.push(data.info);
     }
     return matchList;
   },
 
-  async nextMatchList(accountId, beginIndex, endIndex) {
-    const {
-      data: { matches },
-    } = await instance.get(
-      `/match/v4/matchlists/by-account/${accountId}?endIndex=${endIndex}&beginIndex=${beginIndex}`
+  async nextMatchList(puuid, beginIndex, endIndex) {
+    const matches = await instance2.get(
+      `/match/v5/matches/by-puuid/${puuid}/ids?start=${beginIndex}&count=${endIndex}`,
     );
-
     const matchList = [];
-
-    console.log(matches.length);
-
-    for (let i = 0; i < matches.length; i++) {
-      const { data } = await instance.get(
-        `/match/v4/matches/${matches[i].gameId}`
+    for (let i = 0; i < matches.data.length; i++) {
+      const { data } = await instance2.get(
+        `/match/v5/matches/${matches.data[i]}`
       );
-      matchList.push(data);
+      matchList.push(data.info);
     }
     return matchList;
   },

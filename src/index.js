@@ -4,9 +4,9 @@ const navigation = require("./routes/navigations");
 const search = require("./routes/search");
 
 const app = express();
-const PORT = process.env.PORT || 3002;
+const PORT = process.env.PORT || 3001;
 app.use(cors({
-    origin: ["http://localhost:3001","https://lol.foreverchoi0706.com"]
+    origin: ["http://localhost:3000","https://lor.foreverchoi0706.com"]
 }));
 
 app.use("/navigation", navigation);
