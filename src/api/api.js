@@ -1,6 +1,6 @@
 const axios = require("axios");
 
-const API_KEY = "RGAPI-4d0083e2-daec-49ba-8e63-b3eec2ed4be0";
+const API_KEY = "RGAPI-845a0afe-1610-4bdc-86f0-9d211542646b";
 
 const instance = axios.create({
   baseURL: "https://kr.api.riotgames.com/lol/",
