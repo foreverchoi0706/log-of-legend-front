@@ -1,15 +1,18 @@
 const express = require("express");
 const cors = require("cors");
-const navigation = require("./routes/navigations");
-const search = require("./routes/search");
+
+const lol = require("./routes/lol");
+const lor = require("./routes/lor");
+const tft = require("./routes/tft");
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 app.use(cors());
 
-app.use("/navigation", navigation);
-app.use("/search", search);
+app.use("/lol", lol);
+app.use("/lor", lor);
+app.use("/tft", tft);
 
-app.get("/", (_, res) => res.send("lor server"));
-
-app.listen(PORT, () => console.log(`server is running on http://localhost:${PORT}`));
+app.listen(PORT, () =>
+  console.log(`server is running on http://localhost:${PORT}`)
+);
