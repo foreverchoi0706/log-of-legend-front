@@ -28,6 +28,15 @@ router.get("/version", async (_, res) => {
   return res.status(200).json(data[0]);
 });
 
+router.get("/summoner", async (req, res) => {
+  const { keyword } = req.query;
+  console.log(keyword);
+  const { data } = await _instance.get(
+    `/summoner/v4/summoners/by-name/${keyword}`
+  );
+  return res.status(200).json(data);
+});
+
 /**@championRotations */
 router.get("/championRotations", async (_, res) => {
   const version = await _instance.get(
